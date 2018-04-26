@@ -2,7 +2,7 @@
 
 **Summary:** AI-based Game Design (Part II) extends the principles of game Design studied in Part I with the latest Artificial Intelligence techniques. This part of the module will cover state of the art AI methods that can be used for automatic game tuning, game design, and testing using AI agents and methods. During this module, you will learn these techniques, design your own game and participate in an AI hack. Finally, you will write all your work and experiments in a scientific paper and receive feedback in order to help you submit it to a conference. 
 
-## Outline
+## Outline
 
 The theme of this part of the course is AI Informed Game Design. The main aim is use AI to make better games, though attention will also be given to how we can design games to test important aspects of AI. What "better" means in this context can be hard to pin down, and in everyday terms is anyway a subjective measure. To make this more objective we'll consider aspects of player experience that can be measured and optimised. Since getting human players to play through games can be expensive and time consuming, we'll look at using software agents to automatically play test games.
 
@@ -10,7 +10,7 @@ A key aspect of the course is to consider how the design space of a class of gam
 
 The course will be taught with a mixture of lectures, labs (including game AI competitions), group work and invited talks.
 
-## Main topics
+## Main topics
 
 **Game Design Spaces:** Methods for parameterising a game and building a search space for:
  - game rules
