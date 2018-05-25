@@ -16,15 +16,17 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 **Week 1 (June 4th - June 8th)**
 
+The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work creating variants of the game Planet Wars and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game.
+
 <img src="img/Week1.png" alt="Week1" class="inline"/>
+
 
 **Week 2 (June 11th - June 15th)**
 
+The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on, based on what you've seen on the previous week. You'll form teams according to these projects and work on code and experimentation, to finally write a paper with your findings. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper and (maybe) submit it to one of the suggested conferences.
+
 <img src="img/Week2.png" alt="Week2" class="inline"/>
 
-The **first week** is mostly lectures and labs, designed to indtroduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work on variants of the game Planet Wars and AI agents for them. We'll run a competition among all groups to determine which bot is the best one in all variants.
-
-The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on. You'll form teams according to these projects and work on code, experiments and finally paper writing. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else so you can improve your paper and (maybe) submit it to one of the suggested conferences.
 
 
 ## Main topics
