@@ -44,7 +44,7 @@ To test the various AI approaches mini-competitions will be run to see which tea
 ## Materials
 
 **Lecture Slides: ** 
- - A
+ - GVGAI [./lectures/5.%20GVG.pptx]
  - B
  
 **Labs: ** 
