@@ -14,7 +14,7 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 ## Schedule
 
-**Week 1 (June 4th - June 8th)** [Download] (img/Week1.png)
+**Week 1 (June 4th - June 8th)**
 
 <img src="img/Week1.png" alt="Week1" class="inline"/>
 
