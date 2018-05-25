@@ -16,9 +16,14 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 **Week 1 (June 4th - June 8th)**
 
+The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work creating variants of the game Planet Wars and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game.
+
 <img src="img/Week1.png" alt="Week1" class="inline"/>
 
+
 **Week 2 (June 11th - June 15th)**
+
+The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on, based on what you've seen on the previous week. You'll form teams according to these projects and work on code and experimentation, to finally write a paper with your findings. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper and (maybe) submit it to one of the suggested conferences.
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
 
@@ -51,7 +56,7 @@ For some of the games used, reasonably efficient source code will be provided th
 ## Materials
 
 **Lecture Slides:** 
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/1.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/2.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
  - Coming soon.
  
 **Labs: ** 
@@ -63,9 +68,9 @@ For some of the games used, reasonably efficient source code will be provided th
 - Papers should be prepared in the AIIDE-2018 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit18.zip">here</a>.
   - Group Presentation Marking Form <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/GroupPresentationForm.docx?raw=true">docx</a>
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
-  - [http://www.jmlr.org/reviewing-papers/p92-parberry.pdf] (http://www.jmlr.org/reviewing-papers/p92-parberry.pdf)
-  - [https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/] (https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/)
-- We encourage groups to revise their papers after the peer feedback and submit to a conference such as [AIIDE-2018] (https://sites.google.com/ncsu.edu/aiide-2018/home) or [CEEC 2018] (https://ceec.uk/) (Games special session).
+  - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referee s in Theoretical Computer Science</a>
+  - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
+- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a = href="https://ceec.uk/">CEEC 2018</a> (Games special session).
 
 
 ## Assessment
@@ -75,7 +80,7 @@ Students are advised to work in groups (size 2, 3 or 4).
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short (4-6 pages) draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
   - Peer-review comments on the paper (peer review is by course participants). 
   - Code of the AI Hack and paper works
   - A video showing the games in action 
