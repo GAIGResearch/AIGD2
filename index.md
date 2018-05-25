@@ -25,6 +25,8 @@ The **first week** is mostly lectures and labs, designed to introduce you to the
 
 The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on, based on what you've seen on the previous week. You'll form teams according to these projects and work on code and experimentation, to finally write a paper with your findings. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper and (maybe) submit it to one of the suggested conferences.
 
+2 papers have already been published as a result of this module in IGGI:  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
+
 <img src="img/Week2.png" alt="Week2" class="inline"/>
 
 
