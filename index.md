@@ -1,6 +1,8 @@
 ## IGGI AI based Game Design (Part II)
 
-**Summary:** AI-based Game Design (Part II) extends the principles of game Design studied in Part I with the latest Artificial Intelligence techniques. This part of the module will cover state of the art AI methods that can be used for automatic game tuning, game design, and testing using AI agents and methods. During this module, you will learn these techniques, design your own game and participate in an AI hack. Finally, you will write all your work and experiments in a scientific paper and receive feedback in order to help you submit it to a conference. 
+## Summary 
+
+AI-based Game Design (Part II) extends the principles of game Design studied in Part I with the latest Artificial Intelligence techniques. This part of the module will cover state of the art AI methods that can be used for automatic game tuning, game design, and testing using AI agents and methods. During this module, you will learn these techniques, design your own game and participate in an AI hack. Finally, you will write all your work and experiments in a scientific paper and receive feedback in order to help you submit it to a conference. 
 
 ## Outline
 
@@ -36,14 +38,14 @@ For some of the games used, reasonably efficient source code will be provided th
 
 ## Materials
 
-**Lecture Slides: ** 
+**Lecture Slides:** 
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/1.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
  - Coming soon.
  
 **Labs: ** 
  - Coming soon.
 
-**Extra Materials: **
+**Extra Materials:**
 
 - Suggested paper outline: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/PaperOutline.pdf?raw=true">PDF</a>
 - Papers should be prepared in the AIIDE-2018 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit18.zip">here</a>.
@@ -58,7 +60,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 Students are advised to work in groups (size 2, 3 or 4).
 
-**Deliverables: **
+**Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
   - Report in the form of a short (4-6 pages) draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
@@ -68,7 +70,7 @@ The deliverables are as follows. They should be packaged into a single .zip file
   - Data (game logs etc) underlying the results in the paper
   - Presentation slides
 
-**Weighting: **
+**Weighting:**
 
  - Game AI Hack: 10%
  - Group Presentation: 10%
