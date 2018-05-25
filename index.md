@@ -63,9 +63,9 @@ For some of the games used, reasonably efficient source code will be provided th
 - Papers should be prepared in the AIIDE-2018 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit18.zip">here</a>.
   - Group Presentation Marking Form <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/GroupPresentationForm.docx?raw=true">docx</a>
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
-  - [http://www.jmlr.org/reviewing-papers/p92-parberry.pdf] (http://www.jmlr.org/reviewing-papers/p92-parberry.pdf)
-  - [https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/] (https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/)
-- We encourage groups to revise their papers after the peer feedback and submit to a conference such as [AIIDE-2018] (https://sites.google.com/ncsu.edu/aiide-2018/home) or [CEEC 2018] (https://ceec.uk/) (Games special session).
+  - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referee s in Theoretical Computer Science</a>
+  - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
+- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a = href="https://ceec.uk/">CEEC 2018</a> (Games special session).
 
 
 ## Assessment
