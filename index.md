@@ -51,7 +51,7 @@ For some of the games used, reasonably efficient source code will be provided th
 ## Materials
 
 **Lecture Slides:** 
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/1.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/2.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
  - Coming soon.
  
 **Labs: ** 
