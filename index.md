@@ -20,6 +20,8 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work creating variants of the game Planet Wars and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game.
 
+<a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week1.png?raw=true" target="_blank">Open</a>
+
 <img src="img/Week1.png" alt="Week1" class="inline"/>
 
 
