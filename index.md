@@ -22,6 +22,9 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
 
+The **first week** is mostly lectures and labs, designed to indtroduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work on variants of the game Planet Wars and AI agents for them. We'll run a competition among all groups to determine which bot is the best one in all variants.
+
+The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on. You'll form teams according to these projects and work on code, experiments and finally paper writing. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else so you can improve your paper and (maybe) submit it to one of the suggested conferences.
 
 
 ## Main topics
@@ -75,7 +78,7 @@ Students are advised to work in groups (size 2, 3 or 4).
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short (4-6 pages) draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
   - Peer-review comments on the paper (peer review is by course participants). 
   - Code of the AI Hack and paper works
   - A video showing the games in action 
