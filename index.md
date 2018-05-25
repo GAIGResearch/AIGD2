@@ -1,4 +1,4 @@
-## IGGI AI based Game Design (Part II)
+# IGGI AI based Game Design (Part II)
 
 ## Summary 
 
@@ -11,6 +11,18 @@ The theme of this part of the course is AI Informed Game Design. The main aim is
 A key aspect of the course is to consider how the design space of a class of games can be defined using appropriate data or program structures and then explored using automated search algorithms. Depending on how generally the search space is defined this approach can either be used to generate novel games, or it can be used to find the best set of parameters for a particular game.
 
 The course will be taught with a mixture of lectures, labs (including game AI competitions) and group work.
+
+## Schedule
+
+**Week 1 (June 4th - June 8th)**
+
+<img src="img/Week1.png" alt="Week1" class="inline"/>
+
+**Week 2 (June 11th - June 15th)**
+
+<img src="img/Week2.png" alt="Week2" class="inline"/>
+
+
 
 ## Main topics
 
@@ -34,7 +46,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Defining and measuring aspects of player experience:** We'll run a lab on simple and more complex aspects of player experience which can be measured, and expriment with how sensitive these are to changes in the design of a game.
 
-**Game A versus Game B:** You will work towards making a comparison between two (hopefully interestingly different) alternative games drawn. The experience that some software agents have playing these games will then be measured, with the aim of predicting how this relates to human player experience.
+**Game A versus Game B:** One of your options is to work on a comparison between two (hopefully interestingly different) alternative games drawn. The experience that some software agents have playing these games will then be measured, with the aim of predicting how this relates to human player experience.
 
 ## Materials
 
