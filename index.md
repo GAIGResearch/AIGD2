@@ -1,5 +1,7 @@
 # IGGI AI based Game Design (Part II)
 
+<a href="https://github.com/GAIGResearch/AIGD2/blob/master/IGGI%20AIGD2%20Basic%20Information.pdf?raw=true">Basic Information</a>
+
 ## Summary 
 
 AI-based Game Design (Part II) extends the principles of game Design studied in Part I with the latest Artificial Intelligence techniques. This part of the module will cover state of the art AI methods that can be used for automatic game tuning, game design, and testing using AI agents and methods. During this module, you will learn these techniques, design your own game and participate in an AI hack. Finally, you will write all your work and experiments in a scientific paper and receive feedback in order to help you submit it to a conference. 
