@@ -101,3 +101,7 @@ The deliverables are as follows. They should be packaged into a single .zip file
  - Group Presentation: 10%
  - Peer reviews: 20%
  - Final version of the paper: 60%
+
+**Quiet Room:**
+We have booked an additional room, Bancroft 1.02.6A (two floors below), which you can use at your disposal as a quiet room.
+
