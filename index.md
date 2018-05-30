@@ -1,5 +1,7 @@
 # IGGI AI based Game Design (Part II)
 
+<a href="https://github.com/GAIGResearch/AIGD2/blob/master/IGGI%20AIGD2%20Basic%20Information.pdf?raw=true">Basic Information</a>
+
 ## Summary 
 
 AI-based Game Design (Part II) extends the principles of game Design studied in Part I with the latest Artificial Intelligence techniques. This part of the module will cover state of the art AI methods that can be used for automatic game tuning, game design, and testing using AI agents and methods. During this module, you will learn these techniques, design your own game and participate in an AI hack. Finally, you will write all your work and experiments in a scientific paper and receive feedback in order to help you submit it to a conference. 
@@ -18,6 +20,8 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work creating variants of the game Planet Wars and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game.
 
+<a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week1.png?raw=true" target="_blank">Enlarge</a>
+
 <img src="img/Week1.png" alt="Week1" class="inline"/>
 
 
@@ -26,6 +30,8 @@ The **first week** is mostly lectures and labs, designed to introduce you to the
 The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on, based on what you've seen on the previous week. You'll form teams according to these projects and work on code and experimentation, to finally write a paper with your findings. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper and (maybe) submit it to one of the suggested conferences.
 
 2 papers have already been published as a result of this module in IGGI:  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
+
+<a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week2.png?raw=true" target="_blank">Enlarge</a>
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
 
@@ -95,3 +101,7 @@ The deliverables are as follows. They should be packaged into a single .zip file
  - Group Presentation: 10%
  - Peer reviews: 20%
  - Final version of the paper: 60%
+
+**Quiet Room:**
+We have booked an additional room, Bancroft 1.02.6A (two floors below), which you can use at your disposal as a quiet room.
+
