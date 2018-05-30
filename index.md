@@ -31,6 +31,8 @@ The **second week** will work as a Dagstuhl seminar. We'll start the week with a
 
 2 papers have already been published as a result of this module in IGGI:  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
 
+Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
+
 <a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week2.png?raw=true" target="_blank">Enlarge</a>
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
@@ -90,7 +92,7 @@ Students are advised to work in groups (size 2, 3 or 4).
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
   - Peer-review comments on the paper (peer review is by course participants). 
   - Code of the AI Hack and paper works
   - A video showing the games in action 
