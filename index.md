@@ -65,6 +65,8 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/2.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>
  - Coming soon.
  
 **Labs: ** 
