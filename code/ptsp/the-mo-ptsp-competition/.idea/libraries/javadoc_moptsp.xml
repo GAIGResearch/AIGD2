@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="javadoc-moptsp">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/doc/javadoc-moptsp.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
