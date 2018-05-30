@@ -82,7 +82,7 @@ For some of the games used, reasonably efficient source code will be provided th
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
   - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referee s in Theoretical Computer Science</a>
   - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
-- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a = href="https://ceec.uk/">CEEC 2018</a> (Games special session).
+- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a href="https://ceec.uk/">CEEC 2018</a> (Games special session).
 
 
 ## Assessment
