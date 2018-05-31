@@ -31,6 +31,8 @@ The **second week** will work as a Dagstuhl seminar. We'll start the week with a
 
 2 papers have already been published as a result of this module in IGGI:  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
 
+Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
+
 <a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week2.png?raw=true" target="_blank">Enlarge</a>
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
@@ -65,6 +67,8 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/2.%20Introduction%20(Long).pptx?raw=true">Introduction</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>
  - Coming soon.
  
 **Labs: ** 
@@ -78,7 +82,7 @@ For some of the games used, reasonably efficient source code will be provided th
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
   - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referee s in Theoretical Computer Science</a>
   - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
-- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a = href="https://ceec.uk/">CEEC 2018</a> (Games special session).
+- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a href="https://ceec.uk/">CEEC 2018</a> (Games special session).
 
 
 ## Assessment
@@ -88,7 +92,7 @@ Students are advised to work in groups (size 2, 3 or 4).
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author.
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
   - Peer-review comments on the paper (peer review is by course participants). 
   - Code of the AI Hack and paper works
   - A video showing the games in action 
