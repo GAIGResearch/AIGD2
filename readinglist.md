@@ -140,11 +140,28 @@
   - Link: <a href="http://people.idsia.ch/~schaul/publications/pyvgdl.pdf">PDF</a>
   - Comment: Significantly expanded follow on from the Dagstuhl paper this one includes results for multiple learners on multiple games.
 
-                     
 <b>The 2014 General Video Game Playing Competition</b>
   - Diego Perez-Liebana, Spyridon Samothrakis, Julian Togelius, Tom Schaul, Simon Lucas, Adrien Couetoux, Jerry Lee, Chong- U Lim, Tommy Thompson. The 2014 General Video Game Playing Competition. IEEE Transactions on Computational Intelligence and AI in Games , DOI: 10.1109/TCIAIG.2015.2402393 (2015).
   - Link: <a href="http://www.diego-perez.net/papers/GVGAI2014Competition.pdf">PDF</a>
   - Comment: Framework, controllers and results of the GVGAI 2014 competition.
-         
+
+<b>The 2016 Two-Player GVGAI Competition</b>
+ - Raluca D. Gaina, Adrien Couetoux, Dennis J.N.J. Soemers, Mark H.M. Winands, Tom Vodopivec ,Florian Kirchgessner, Jialin Liu, Simon M. Lucas, Diego Perez-Liebana, The 2016 Two-Player GVGAI Competition, in IEEE Transactions on Computational Intelligence and AI in Games (2017). 
+  - Link: <a href="http://www.diego-perez.net/papers/GVGAI20162PCompetition.pdf">PDF</a>
+  - This paper showcases the setting and results of the first Two-Player General Video Game AI competition, which ran in 2016 at the IEEE World Congress on Computational Intelligence and the IEEE Conference on Computational Intelligence and Games.
+
+<b>General Video Game AI: a Multi-Track Framework for Evaluating Agents, Games and Content Generation Algorithms</b>
+ - Diego Perez-Liebana, Jialin Liu, Ahmed Khalifa, Raluca Gaina, Julian Togelius and Simon Lucas
+ - Link: <a href="https://arxiv.org/pdf/1802.10363">PDF (arxiv)</a>
+ - GVGAI Survey, which summarizes and cites all work done in GVGAI until 2017 (included). Under revision at IEEE Transactions on Computational Intelligence and AI in Games.
+
+
+<b>General Win Prediction from Agent Experience</b>
+ - Raluca D. Gaina, Simon M. Lucas, Diego Perez-Liebana, General Win Prediction from Agent Experience, in Proceedings on the Conference on Computational Intelligence and Games (CIG) (2018).
+ - Link: <a href="http://www.diego-perez.net/papers/GeneralWinPrediction.pdf">PDF</a>
+ - Based only on agent experience features, this paper presents a victory predictor for GVGAI Games.
+ 
+ 
+
   - For more GVGAI Papers, see the <a href="http://gvgai.net/papers.php:">papers</a> section of <a href="http://gvgai.net">www.gvgai.net</a>: 
              
