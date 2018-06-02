@@ -22,6 +22,13 @@
  - Link: <a href="http://www.diego-perez.net/papers/EvolvingGameSkillDepth.pdf">PDF</a>
  - Comment: General Video Game AI agents are used in this paper to evolve parameters of the game space with a Random Mutation Hill-Climber and a Multi-Armed Bandit version of the same algorithm. This paper explores these algorithms as a way to efficiently evaluate variations of the Space Battle game in spite of the high computational cost of the evaluations, with the objective of providing versions of the game that show a good skill depth.
 
+<b>The N-Tuple Bandit Evolutionary Algorithm for Game Agent Optimisation</b>
+ - Simon Lucas, Jialin Liu, Diego Perez-Liebana, The N-Tuple Bandit Evolutionary Algorithm for Game Agent Optimisation, in Proceedings of the Congress on Evolutionary Computation (CEC) (2018). 
+ - Link: <a href="http://www.diego-perez.net/papers/nTupleGameAgentOptimization.pdf">PDF</a>
+ - Comment: Nominated for best paper award. This paper describes the N-Tuple Bandit Evolutionary Algorithm (NTBEA), an optimisation algorithm developed for noisy and expensive discrete (combinatorial) optimisation problems.
+ 
+ 
+
 ## AI-Assisted Game Design (Evolutionary Game Design, Agent Design, and Automatic Game Evaluation)
 
 <b>An Experiment in Automatic Game Design</b>
@@ -71,6 +78,11 @@
   - Sam Devlin, Anastasija Anspoka, Nick Sephton, Peter I. Cowling, Jeff Rollason, Twelfth Artificial Intelligence and Interactive Digital Entertainment Conference (2016).
   - Link: <a href="https://www.aaai.org/ocs/index.php/AIIDE/AIIDE16/paper/view/14003">PDF</a>
   - Comment: Biasing MCTS using human gameplay data to design strong human-like playing agents for AI Factory Spades.</ul>
+               
+<b>Using a Team of General AI Algorithms to Assist Game Design and Testing</b>
+ - Cristina Guerrero-Romero, Simon M Lucas, Diego Perez-Liebana, Using a Team of General AI Algorithms to Assist Game Design and Testing, in Proceedings on the Conference on Computational Intelligence and Games (CIG) (2018).
+ - Link: <a href="http://www.diego-perez.net/papers/TeamGeneralAIGameDesign.pdf">PDF</a>
+ - Comment: Vision paper. A team of agents with different capabilities to play-test a game (or generated content).
                
  
 ## Dagstuhl Seminars
