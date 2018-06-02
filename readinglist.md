@@ -2,7 +2,7 @@
 
 ## Parametrizing the Game Space
 
-### Exploring Game Space Using Survival Analysis
+<b>Exploring Game Space Using Survival Analysis</b>
  - Aaron Isaksen, Dan Gopstein, and Andy Nealen. Exploring Game Space Using Survival Analysis. Foundations of Digital Games, 2015. Best Paper in Artificial Intelligence and Game Technology.
  - Link: <a href="http://game.engineering.nyu.edu/wp-content/uploads/2015/04/exploring-game-space-FDG2015.pdf">PDF</a>
  - Comment: Flappy birds variants, obtained by modifying game parameters.
@@ -93,9 +93,9 @@
   - Link: <a href="http://www.diego-perez.net/papers/MCTSSurvey.pdf">PDF</a>
   - Comment: Survey about MCTS. Algorithm description, variants and applications.
   
-### Rolling Horizon Evolutionary Algorithms (RHEA)
+## Rolling Horizon Evolutionary Algorithms (RHEA)
 
-## Rolling Horizon Evolution versus Tree Search for Navigation in Single Player Real-Time Games
+### Rolling Horizon Evolution versus Tree Search for Navigation in Single Player Real-Time Games
   - Diego Perez-Liebana, Spyridon Samothrakis, Simon M. Lucas and Philipp Rolfshagen. Rolling Horizon Evolution versus Tree Search for Navigation in Single Player Real-Time Games Proceedings of the Genetic and Evolutionary Computation Conference (GECCO) (2013), pages: 351-358.
   - Link: <a href="http://www.diego-perez.net/papers/GECCO_RollingHorizonEvolution.pdf">PDF</a>
   - Comment: One of the first application of Rolling Horizon Evolution to Real-Time Games.
