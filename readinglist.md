@@ -97,7 +97,7 @@
   - Link: <a href="http://drops.dagstuhl.de/opus/volltexte/2012/3651/pdf/dagrep_v002_i005_p043_s12191.pdf">PDF</a>
   - Comment: See Section 4.1: 4.1 The Dagstuhl Planet Wars Hackathon gives a flavour of the Game AI Hack
   
-<b>Artificial and Computational Intelligence in Games: AI-Driven Game Design</b>
+<b>Artificial and Computational Intelligence in Games: AI-Driven Game Design (2017)</b>
  - Pieter Spronck and Elisabeth André and Michael Cook and Mike Preuss
  - Link: <a href="http://drops.dagstuhl.de/opus/volltexte/2018/8672/pdf/dagrep_v007_i011_p086_17471.pdf">PDF</a>
  - A <b>complete</b> seminar about AI-Driven Game Design. Includes topics on game design search spaces, AI-assisted board game play, emergence, a general language for matching tile games, gameplay evaluation measures and explainable AI for Game Designers. 
