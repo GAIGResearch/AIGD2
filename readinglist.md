@@ -162,5 +162,5 @@
  
  
 
-For more GVGAI Papers, see the <a href="http://gvgai.net/papers.php:">papers</a> section of <a href="http://gvgai.net">www.gvgai.net</a>: 
+For more GVGAI Papers, see the <a href="http://gvgai.net/papers.php:">papers</a> section of <a href="http://gvgai.net">www.gvgai.net</a>.
              
