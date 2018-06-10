@@ -69,13 +69,24 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202018.pptx?raw=true">Rolling Horizon Evolution</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Fast%20Forward%20Models%202018.pptx?raw=true">Fast Forward Models</a> - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>
+ - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20AI%20Hack%202018.pptx?raw=true">Game AI Hack</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Peer%20Review.pptx?raw=true">Peer Review</a>
  - Coming soon.
  
-**Labs: ** 
- - Coming soon.
+**Labs:** 
+ -  [Game Tuning](./labs/GameTuningLab2018.pdf)
+ -  [Rolling Horizon Evolution](./labs/RollingHorizonLab2018.pdf)
+
+**Game AI Hack:**
+
+In 2018 we're using Spin Planet Wars.  Each team develops their own agent, and their own custom arena...
+
+![Spinning Planet wWars Game](img/SpinBattle.png)
 
 **Extra Materials:**
 
@@ -83,7 +94,7 @@ For some of the games used, reasonably efficient source code will be provided th
 - Papers should be prepared in the AIIDE-2018 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit18.zip">here</a>.
   - Group Presentation Marking Form <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/GroupPresentationForm.docx?raw=true">docx</a>
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
-  - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referee s in Theoretical Computer Science</a>
+  - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referees in Theoretical Computer Science</a>
   - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
 - We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a href="https://ceec.uk/">CEEC 2018</a> (Games special session).
 
