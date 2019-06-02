@@ -18,7 +18,7 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 ## Schedule
 
-**Week 1 (June 4th - June 8th)**
+**Week 1 (June 3th - June 7th)**
 
 The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. On Wednesday, we'll have two guest talks: Vanessa Volz and Mike Cook.
 
@@ -29,7 +29,7 @@ On Thursday we'll have the game AI Hack in which you, in teams, will work creati
 <img src="img/Week1.png" alt="Week1" class="inline"/>
 
 
-**Week 2 (June 11th - June 15th)**
+**Week 2 (June 10th - June 14th)**
 
 The **second week** will work as a Dagstuhl seminar. You'll form teams according to these projects and work on code and experimentation, to finally write a report in the form of a paper with your findings. On Monday, we'll have another guest speaker: Simon Colton. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper.
 
