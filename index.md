@@ -20,7 +20,9 @@ The course will be taught with a mixture of lectures, labs (including game AI co
 
 **Week 1 (June 4th - June 8th)**
 
-The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. We'll end the week with a game AI Hack in which you, in teams, will work creating variants of the game Planet Wars and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game.
+The **first week** is mostly lectures and labs, designed to introduce you to the concepts of using AI for Game Design. On Wednesday, we'll have two guest talks: Vanessa Volz and Mike Cook.
+
+On Thursday we'll have the game AI Hack in which you, in teams, will work creating variants of the game Pommerman and AI agents to play them. We'll run a competition among all groups to determine which bot is the best one in all the desgined variants of the game. Finally, on Friday afternoon, we'll run a group forming and brainstorming session in which you can propose projects to work on, based on what you've seen during the week.
 
 <a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week1.png?raw=true" target="_blank">Enlarge</a>
 
@@ -29,16 +31,13 @@ The **first week** is mostly lectures and labs, designed to introduce you to the
 
 **Week 2 (June 11th - June 15th)**
 
-The **second week** will work as a Dagstuhl seminar. We'll start the week with a brainstorming session in which you can propose projects to work on, based on what you've seen on the previous week. You'll form teams according to these projects and work on code and experimentation, to finally write a paper with your findings. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper and (maybe) submit it to one of the suggested conferences.
+The **second week** will work as a Dagstuhl seminar. You'll form teams according to these projects and work on code and experimentation, to finally write a report in the form of a paper with your findings. On Monday, we'll have another guest speaker: Simon Colton. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper.
 
-2 papers have already been published as a result of this module in IGGI:  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
-
-Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
+Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2-2019</a>
 
 <a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week2.png?raw=true" target="_blank">Enlarge</a>
 
 <img src="img/Week2.png" alt="Week2" class="inline"/>
-
 
 
 ## Main topics
@@ -68,6 +67,7 @@ For some of the games used, reasonably efficient source code will be provided th
 ## Materials
 
 **Lecture Slides:** 
+<!--
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
@@ -76,41 +76,40 @@ For some of the games used, reasonably efficient source code will be provided th
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20AI%20Hack%202018.pptx?raw=true">Game AI Hack</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Peer%20Review.pptx?raw=true">Peer Review</a>
- - Coming soon.
  
 **Labs:** 
  -  [Game Tuning](./labs/GameTuningLab2018.pdf)
  -  [Rolling Horizon Evolution](./labs/RollingHorizonLab2018.pdf)
+-->
 
 **Game AI Hack:**
 
-In 2018 we're using Spin Planet Wars.  Each team develops their own agent, and their own custom arena...
+In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena.
 
-![Spinning Planet wWars Game](img/SpinBattle.png)
+![Pommerman game](img/Pommerman.png)
 
 **Extra Materials:**
 
 - Suggested paper outline: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/PaperOutline.pdf?raw=true">PDF</a>
-- Papers should be prepared in the AIIDE-2018 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit18.zip">here</a>.
+- Papers should be prepared in the AIIDE-2019 standard double-column format (6 pages of content plus 1 for references). Word and LaTeX templates are available <a href="http://www.aaai.org/Publications/Templates/AuthorKit19.zip">here</a>.
   - Group Presentation Marking Form <a href="https://github.com/GAIGResearch/AIGD2/blob/master/utils/GroupPresentationForm.docx?raw=true">docx</a>
   - For some general advice on scientific peer review, the links below are useful. Please keep in mind that not all the points apply to the peer review part of this course:
   - <a href="http://www.jmlr.org/reviewing-papers/p92-parberry.pdf">A Guide for New Referees in Theoretical Computer Science</a>
   - <a href="https://violentmetaphors.com/2013/12/13/how-to-become-good-at-peer-review-a-guide-for-young-scientists/">How to become good at peer review: A guide for young scientists</a>
-- We encourage groups to revise their papers after the peer feedback and submit to a conference such as <a href="https://sites.google.com/ncsu.edu/aiide-2018/home">AIIDE-2018</a> or <a href="https://ceec.uk/">CEEC 2018</a> (Games special session).
+- We encourage groups to revise their papers after the peer feedback and submit to a relevant conference. 2 papers have already been published as a result of this module in IGGI! <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/NTupleBanditGameImprovement.pdf?raw=true">one</a> and  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/papers/automatic-game-tuning.pdf?raw=true">two</a>.
 
 
 ## Assessment
 
-Students are advised to work in groups (size 2, 3 or 4).
+Students are advised to work in groups (size 3 or 4).
 
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd2">https://easychair.org/conferences/?conf=aigd2</a>
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd2-2019">https://easychair.org/conferences/?conf=aigd2-2019</a>
   - Peer-review comments on the paper (peer review is by course participants). 
-  - Code of the AI Hack and paper works
-  - A video showing the games in action 
-  - Data (game logs etc) underlying the results in the paper
+  - Code of the AI Hack and paper  
+  - Data, if applicable, (game logs etc) underlying the results in the paper
   - Presentation slides
 
 **Weighting:**
@@ -121,5 +120,5 @@ The deliverables are as follows. They should be packaged into a single .zip file
  - Final version of the paper: 60%
 
 **Quiet Room:**
-We have booked an additional room, Bancroft 1.02.6A (two floors below), which you can use at your disposal as a quiet room.
+You can use Diego's room, CS.301(near reception), at your disposal as a quiet room.
 
