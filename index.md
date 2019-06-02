@@ -45,7 +45,6 @@ Submissions and peer-reviews of these papers will be done via EasyChair: <a href
 **Game Design Spaces:** Methods for parameterising a game and building a search space for:
  - game rules and parameters
  - input controls
- - vgdl
  - game design
  - level designs
  
@@ -53,10 +52,9 @@ Submissions and peer-reviews of these papers will be done via EasyChair: <a href
  **Toward quick and easy game AI:** The relevance of this is to generate a diverse set of agents to automatically play-test a game. This section will consider ways to quickly generate a number of reasonable performance AI players with relatively little effort. You may have already have covered many or even all the techniques below, but much can be learned by applying them to different games: there's still much to be learned regarding which methods work best and why:
  - Monte Carlo Tree Search
  - Rolling Horizon Evolutionary Algorithms
- - Video Game Description Language (VGDL) and General Video Game AI
  - N-Tuple Bandit Evolutionary Algorithms
 
-To study aspects of game design spaces, and also for your experimental work, we'll use a version of Planet Wars and GVGAI games (all written in Java). You may also be able to use your own examples.
+To study aspects of game design spaces, and also for your experimental work, we'll use a version of Pommerman (Java). You may also be able to use your own examples.
 
 For some of the games used, reasonably efficient source code will be provided that can be run headless thousands of times faster than real time, enabling simulation-based search to be used to implement AI controllers. To test the various AI approaches mini-competitions will be run to see which team can generate the best performing AI, or the AI which best optimises some aspect of player experience.
 
@@ -120,5 +118,5 @@ The deliverables are as follows. They should be packaged into a single .zip file
  - Final version of the paper: 60%
 
 **Quiet Room:**
-You can use Diego's room, CS.301(near reception), at your disposal as a quiet room.
+You can use Diego's room, CS.301 (near reception), at your disposal as a quiet room.
 
