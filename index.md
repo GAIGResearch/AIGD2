@@ -66,9 +66,11 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
 
-- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Brief%20Intro%202019.pptx.pptx?raw=true">Introduction</a>
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Brief%20Intro%202019.pptx?raw=true">Introduction</a>
 
-- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%202019.pptx?raw=true">Game Design Spaces</a>
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Search%20Spaces%202019.pptx?raw=true">Game Design Spaces</a>
+
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/NTBEA%202019.pptx?raw=true">NTBEA</a>
 
 - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202019.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
 
