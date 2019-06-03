@@ -72,7 +72,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/NTBEA%202019.pptx?raw=true">NTBEA</a>
 
-- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202019.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202019.pptx?raw=true">Game Parameter Tuning with NTBEA</a>)
 
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202018.pptx?raw=true">Rolling Horizon Evolution</a>)
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Fast%20Forward%20Models%202018.pptx?raw=true">Fast Forward Models</a>)
