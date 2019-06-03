@@ -66,6 +66,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
 <!--
+
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>
  - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
@@ -82,7 +83,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Game AI Hack:**
 
-In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena.
+In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena. The repositoty is <a href="https://github.com/GAIGResearch/java-pommerman">here</a>.
 
 ![Pommerman game](img/Pommerman.png)
 
