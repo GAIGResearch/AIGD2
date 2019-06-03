@@ -66,9 +66,12 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Lecture Slides:** 
 
-[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>)
-[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>)
-[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>)
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Brief%20Intro%202019.pptx.pptx?raw=true">Introduction</a>
+
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%202019.pptx?raw=true">Game Design Spaces</a>
+
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202019.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
+
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202018.pptx?raw=true">Rolling Horizon Evolution</a>)
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Fast%20Forward%20Models%202018.pptx?raw=true">Fast Forward Models</a>)
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>)
