@@ -77,8 +77,9 @@ For some of the games used, reasonably efficient source code will be provided th
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Peer%20Review.pptx?raw=true">Peer Review</a>)
  
 **Labs:** 
-[//]: #  (-  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/GameTuningLab2018.pdf?raw=true">Game Tuning</a>)
-[//]: #  (-  <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2018.pdf?raw=true">Rolling Horizon Evolution</a>)
+
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/GameTuningLab2018.pdf?raw=true">Game Tuning</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2018.pdf?raw=true">Rolling Horizon Evolution</a>)
 
 
 **Game AI Hack:**
