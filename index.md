@@ -33,7 +33,7 @@ On Thursday we'll have the game AI Hack in which you, in teams, will work creati
 
 The **second week** will work as a Dagstuhl seminar. You'll form teams according to these projects and work on code and experimentation, to finally write a report in the form of a paper with your findings. On Monday, we'll have another guest speaker: Simon Colton. We'll end the week running a peer-review session among the groups in which you'll receive feedback from everybody else, so you can improve your paper.
 
-Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd2-2019">https://easychair.org/conferences/?conf=aigd2-2019</a>
+Submissions and peer-reviews of these papers will be done via EasyChair: <a href="https://easychair.org/conferences/?conf=aigd22019">https://easychair.org/conferences/?conf=aigd22019</a>
 
 <a href="https://github.com/GAIGResearch/AIGD2/blob/master/img/Week2.png?raw=true" target="_blank">Enlarge</a>
 
@@ -106,7 +106,7 @@ Students are advised to work in groups (size 3 or 4).
 **Deliverables:**
 
 The deliverables are as follows. They should be packaged into a single .zip file and send to the instructors via email.
-  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd2-2019">https://easychair.org/conferences/?conf=aigd2-2019</a>
+  - Report in the form of a short draft conference paper. The paper should include or be accompanied by a brief statement of the contribution of each author. Sumbit here: <a href="https://easychair.org/conferences/?conf=aigd22019">https://easychair.org/conferences/?conf=aigd22019</a>
   - Peer-review comments on the paper (peer review is by course participants). 
   - Code of the AI Hack and paper  
   - Data, if applicable, (game logs etc) underlying the results in the paper
