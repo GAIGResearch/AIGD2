@@ -65,24 +65,26 @@ For some of the games used, reasonably efficient source code will be provided th
 ## Materials
 
 **Lecture Slides:** 
-<!--
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202018.pptx?raw=true">Rolling Horizon Evolution</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Fast%20Forward%20Models%202018.pptx?raw=true">Fast Forward Models</a> - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20AI%20Hack%202018.pptx?raw=true">Game AI Hack</a>
- - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Peer%20Review.pptx?raw=true">Peer Review</a>
+
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Introduction%202018.pptx?raw=true">Introduction</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Design%20Spaces%20with%20Videos%202018.pptx?raw=true">Game Design Spaces</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202018.pptx?raw=true">Game Parameter Tuning with NTBEA</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202018.pptx?raw=true">Rolling Horizon Evolution</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Fast%20Forward%20Models%202018.pptx?raw=true">Fast Forward Models</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP.pptx?raw=true">MCTS and PTSP</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/GVGAI.pptx?raw=true">GVGAI</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20AI%20Hack%202018.pptx?raw=true">Game AI Hack</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Peer%20Review.pptx?raw=true">Peer Review</a>)
  
 **Labs:** 
- -  [Game Tuning](./labs/GameTuningLab2018.pdf)
- -  [Rolling Horizon Evolution](./labs/RollingHorizonLab2018.pdf)
--->
+
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/GameTuningLab2018.pdf?raw=true">Game Tuning</a>)
+[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2018.pdf?raw=true">Rolling Horizon Evolution</a>)
+
 
 **Game AI Hack:**
 
-In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena.
+In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena. The repositoty is <a href="https://github.com/GAIGResearch/java-pommerman">here</a>.
 
 ![Pommerman game](img/Pommerman.png)
 
