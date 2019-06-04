@@ -91,7 +91,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/GameTuningLab2019.pdf?raw=true">Game Tuning</a>
 
-[//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2018.pdf?raw=true">Rolling Horizon Evolution</a>)
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2019.pdf?raw=true">Rolling Horizon Evolution</a>
 
 
 **Game AI Hack:**
