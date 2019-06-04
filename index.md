@@ -96,7 +96,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Game AI Hack:**
 
-In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena. The repositoty is <a href="https://github.com/GAIGResearch/java-pommerman">here</a>.
+In 2019 we're using Pommerman. Each team develops their own agent, and their own custom arena. The repositoty is <a href="https://github.com/GAIGResearch/java-pommerman">here</a> and here is the <a href="https://github.com/GAIGResearch/java-pommerman/wiki">documentation</a>.
 
 ![Pommerman game](img/Pommerman.png)
 
