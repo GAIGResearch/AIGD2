@@ -74,7 +74,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/MCTS%2BPTSP%2BGVGAI%202019.pptx?raw=true">MCTS (and Use Cases)</a>
 
-- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202019.pptx?raw=true">MCTS (and Use Cases)</a>
+- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Rolling%20Horizon%20Evolution%202019.pptx?raw=true">Rolling Horizon Evolution</a>
 
 
 [//]: #  (- <a href="https://github.com/GAIGResearch/AIGD2/blob/master/lectures/Game%20Parameter%20Tuning%20with%20NTBEA%202019.pptx?raw=true">Game Parameter Tuning with NTBEA</a>)
