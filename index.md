@@ -96,7 +96,7 @@ For some of the games used, reasonably efficient source code will be provided th
 
 **Guest talks:**
 
- - Vanessa Volz: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/talks/lvl_gen.pdf">Procedural Level Generation</a>
+ - Vanessa Volz: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/talks/lvl_gen.pdf?raw=true">Procedural Level Generation</a>
 
 **Game AI Hack:**
 
