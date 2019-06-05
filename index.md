@@ -97,6 +97,8 @@ For some of the games used, reasonably efficient source code will be provided th
 **Guest talks:**
 
  - Vanessa Volz: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/talks/lvl_gen.pdf?raw=true">Procedural Level Generation</a>
+ 
+ - Mike Cook: <a href="http://www.possibilityspace.org/talks/agd2019.pdf">Automated Game Design</a>
 
 **Game AI Hack:**
 
