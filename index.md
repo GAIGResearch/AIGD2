@@ -94,6 +94,9 @@ For some of the games used, reasonably efficient source code will be provided th
 
 - <a href="https://github.com/GAIGResearch/AIGD2/blob/master/labs/RollingHorizonLab2019.pdf?raw=true">Rolling Horizon Evolution</a>
 
+**Guest talks:**
+
+ - Vanessa Volz: <a href="https://github.com/GAIGResearch/AIGD2/blob/master/talks/lvl_gen.pdf">Procedural Level Generation</a>
 
 **Game AI Hack:**
 
