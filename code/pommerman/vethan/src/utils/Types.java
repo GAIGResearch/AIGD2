@@ -46,7 +46,7 @@ public class Types {
     public static boolean VISUALS = true;
     public static boolean LOGGING_STATISTICS = false;
 
-    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 players).
+    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 vethan_players).
     public static int NUM_ACTIONS = 7;        //Changing this is NOT going to work either.
 
     public static IGameConfig getGameConfig() {return gameConfig;}
@@ -136,6 +136,18 @@ public class Types {
             return types;
         }
 
+
+        /**
+         * Returns all power up types.
+         * @return all power up types.
+         */
+        public static HashSet<TILETYPE> getPowerUpTypes_nagasaki45() {
+            HashSet<TILETYPE> types = new HashSet<>();
+            types.add(EXTRABOMB);
+            types.add(INCRRANGE);
+            types.add(KICK);
+            return types;
+        }
 
         /**
          * Checks if two boards (arrays of tiletypes) are the same

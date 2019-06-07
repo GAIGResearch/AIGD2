@@ -109,7 +109,7 @@ public class GameState {
     }
 
     /**
-     * For debug purposes only: shows the current state of winners for all players.
+     * For debug purposes only: shows the current state of winners for all nagasaki45_players.
      */
     private void computeResults()
     {
@@ -542,4 +542,5 @@ public class GameState {
             this.step_count = ticks;
         }
     }
+
 }

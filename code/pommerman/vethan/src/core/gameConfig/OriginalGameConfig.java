@@ -119,7 +119,7 @@ public class OriginalGameConfig implements IGameConfig {
     /**
      * Processes winners from the list of agends dead this tick.
      * Rules are (from original Pommerman):
-     *  "The game ends when only players from one team remains. Ties can happen when
+     *  "The game ends when only vethan_players from one team remains. Ties can happen when
      *   the game does not end before the max steps or if both teams' last agents are
      *   destroyed on the same turn."
      *   All final winner statuses are shared by all members of the same team.
@@ -161,7 +161,7 @@ public class OriginalGameConfig implements IGameConfig {
             int[] aliveTeamCount = getAliveCountPerTeam(game_mode, aliveAgents);
             int nTeams = aliveTeamCount.length;
 
-            //Set LOSS as winning status for all players in teams with no representatives.
+            //Set LOSS as winning status for all vethan_players in teams with no representatives.
             int teamsWithAlivePlayers = nTeams;
             int lastTeamWithAlivePlayers = -1;
             for (int i = 0; i < nTeams; i++) {
@@ -197,8 +197,8 @@ public class OriginalGameConfig implements IGameConfig {
 
 
     /**
-     * Indicates if the game is ended. In this config, it is if there's 1 or none players alive (for FFA)
-     * or if all remaining players are from the same team (TEAM, TEAM_RADIO).
+     * Indicates if the game is ended. In this config, it is if there's 1 or none vethan_players alive (for FFA)
+     * or if all remaining vethan_players are from the same team (TEAM, TEAM_RADIO).
      * @param gameTick current game tick
      * @param gameMode game mode being played
      * @param aliveAgents number of agents alive per team.

@@ -391,7 +391,7 @@ public class Utils
         Types.TILETYPE tileType = board[position.y][position.x];
 
         boolean positionIsPassable = false;
-        if(Types.TILETYPE.getAgentTypes().contains(tileType) || Types.TILETYPE.getPowerUpTypes().contains(tileType) ||
+        if(Types.TILETYPE.getAgentTypes().contains(tileType) || Types.TILETYPE.getPowerUpTypes_nagasaki45().contains(tileType) ||
                 tileType == Types.TILETYPE.PASSAGE){
 
             // Also check if position is an enemy
@@ -522,7 +522,7 @@ public class Utils
             Types.TILETYPE tiletype = board[pos.y][pos.x];
             return tiletype == Types.TILETYPE.PASSAGE ||
                     tiletype == Types.TILETYPE.BOMB ||
-                    Types.TILETYPE.getPowerUpTypes().contains(tiletype);
+                    Types.TILETYPE.getPowerUpTypes_nagasaki45().contains(tiletype);
         }
         return false;
     }

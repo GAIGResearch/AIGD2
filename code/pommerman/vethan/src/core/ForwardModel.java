@@ -100,7 +100,7 @@ public class ForwardModel {
      * @param intBoard Game board in int representation
      * @param bombBlastStrength Bomb blast strength array
      * @param bombLife Bomb life array
-     * @param alive Indices of players alive
+     * @param alive Indices of vethan_players alive
      * @param game_mode Mode of game
      */
     ForwardModel(int[][] intBoard, int[][] bombBlastStrength, int[][] bombLife, int[] alive, Types.GAME_MODE game_mode){
@@ -344,7 +344,7 @@ public class ForwardModel {
         // 8. Late update bomb overlaps. In previous loop it's possible that some bombs ended up overlapping.
         checkPositionOverlap(bombs, board, VERBOSE_FM_DEBUG && trueModel);
 
-        // If bombs were bounced back, then they may overlap players again, bounce players back too if players moved.
+        // If bombs were bounced back, then they may overlap vethan_players again, bounce vethan_players back too if vethan_players moved.
         for (GameObject b: bombs) {
             for (GameObject p : agents) {
                 if (!p.getDesiredCoordinate().equals(p.getPosition()) &&
@@ -461,7 +461,7 @@ public class ForwardModel {
                         Vector2d velocity = p.getDesiredCoordinate().subtract(p.getPosition());
                         ((Bomb)b).setVelocity(velocity);
 
-                        // First bomb move on the same tick as the kick happened. Do not move into players or walls.
+                        // First bomb move on the same tick as the kick happened. Do not move into vethan_players or walls.
                         // If bomb couldn't move, reset its velocity
                         ArrayList<Types.TILETYPE> collisions = new ArrayList<>();
                         collisions.add(Types.TILETYPE.RIGID);
@@ -1022,7 +1022,7 @@ public class ForwardModel {
             }
         }
 
-        // Add players in the corners
+        // Add vethan_players in the corners
         addAgent(1, 1, 0);
         addAgent(board.length - 2, 1, 1);
         addAgent(1, board[1].length - 2, 2);
@@ -1122,7 +1122,7 @@ public class ForwardModel {
         }
 
         // Reduce arraylists of flames and bombs
-        // Reset flames life if playerIdx > -1, players don't know this information
+        // Reset flames life if playerIdx > -1, vethan_players don't know this information
         _reduceHiddenList(flames, copy.flames, avatarPosition, range);
         _reduceHiddenList(bombs, copy.bombs, avatarPosition, range);
         copy.aliveAgents = findAliveAgents(copy.agents);

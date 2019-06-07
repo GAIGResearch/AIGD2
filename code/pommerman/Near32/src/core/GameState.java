@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static utils.Types.NUM_ACTIONS;
+import static utils.Types.WALL_CLOCK;
 
 @SuppressWarnings("unused")
 public class GameState {
@@ -109,7 +110,7 @@ public class GameState {
     }
 
     /**
-     * For debug purposes only: shows the current state of winners for all players.
+     * For debug purposes only: shows the current state of winners for all near32_players.
      */
     private void computeResults()
     {
@@ -140,8 +141,8 @@ public class GameState {
 
             if (tick == Types.MAX_GAME_TICKS)
                 Types.getGameConfig().processTimeout(gameMode, getAgents(), getAliveAgents());
-
             return true;
+
         }
 
         return false;
@@ -193,6 +194,10 @@ public class GameState {
 
     public int[][] getBombLife() {
         return model.getBombLife();
+    }
+
+    public int[][] getBombDiffusionCounter() {
+        return model.getBombDiffusionCounter();
     }
 
     public int getTeam(){ return avatar.getTeam(); }
@@ -312,8 +317,8 @@ public class GameState {
 
     /* ----- Methods to insert or remove observations into the game model ----- */
 
-    public void addBomb(int x, int y, int blastStrength, int bombLife, int playerIdx, boolean addToBoard, boolean remote) {
-        model.addBomb(x, y, blastStrength, bombLife, playerIdx, addToBoard, remote);
+    public void addBomb(int x, int y, int blastStrength, int bombLife, int playerIdx, boolean addToBoard) {
+        model.addBomb(x, y, blastStrength, bombLife, playerIdx, addToBoard);
     }
 
     public void addFlame(int x, int y, int life) {
@@ -479,18 +484,6 @@ public class GameState {
         Gson gson = builder.create();
 
         return gson.toJson(serialisableGameState);
-    }
-
-    public int bombsPlanted() {
-        return model.getBombsPlanted(avatar.getPlayerID()-10);
-    }
-
-    public boolean hasRemote() {
-        return avatar.hasRemoteBomb();
-    }
-
-    public boolean canTriggerBomb() {
-        return model.getBombsPlanted(avatar.getPlayerID()-10) > 0;
     }
 
     /**

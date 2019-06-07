@@ -2,3 +2,13 @@
 .DS_Store
 .DS_Store
 .DS_Store
+
+code/pommerman/Nagasaki45/\.idea/
+
+*.class
+
+*.iml
+
+*.kotlin_module
+
+*.xml

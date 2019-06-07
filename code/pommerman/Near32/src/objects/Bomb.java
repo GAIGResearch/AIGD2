@@ -4,7 +4,6 @@ import utils.Types;
 import utils.Utils;
 import utils.Vector2d;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import static utils.Types.*;
@@ -14,65 +13,51 @@ public class Bomb extends GameObject {
     private int blastStrength;
     private Vector2d velocity;
     private int playerIdx;
-    private boolean remote;
-    int explosionType=2;
+    private int diffusion_counter = 0;
 
-    public  boolean isRemote() {
-        return remote;
-    }
-    public Bomb(int blastStrength, int life, int pIdx, boolean remote) {
+    public Bomb(int blastStrength, int life, int pIdx) {
         super(Types.TILETYPE.BOMB);
-        this.remote = remote;
-        this.life = remote ? BOMB_LIFE+1 : life ;
+        this.life = life;
         this.blastStrength = blastStrength;
         this.playerIdx = pIdx;
         velocity = new Vector2d();
-
-        double x = Math.random();
-        if (x<=0.5){explosionType=0;}
-        else if (0.5<x & x<=0.75){explosionType=1;}
-        else if (0.75<x){explosionType=2;}
     }
 
     public Bomb() {
         super(Types.TILETYPE.BOMB);
         blastStrength = DEFAULT_BOMB_BLAST;
+        life = BOMB_LIFE;
     }
-
-
-    public boolean canTrigger() {
-        return remote && life - BOMB_LIFE > 2;
-    }
-
-
-    public void triggerRemotely() {
-        if(canTrigger())
-            life = 0;
-    }
-
-    @Override
-    public Image getImage() { return remote ? TILETYPE.REMOTEBOMBGO.getImage() : Types.TILETYPE.BOMB.getImage();}
-
 
     @Override
     public void tick() {
-        if(!remote) {
-            life--;
-        } else if(remote && life > 0)
-        {
-            life++;
-        }
+        life--;
         desiredCoordinate = position.add(velocity);
     }
 
     @Override
     public GameObject copy() {
-        Bomb copy = new Bomb(blastStrength, life, playerIdx, remote);
+        Bomb copy = new Bomb(blastStrength, life, playerIdx);
         copy.desiredCoordinate = desiredCoordinate.copy();
         copy.position = position.copy();
         copy.velocity = velocity.copy();
         copy.id = hashCode();
+        copy.diffusion_counter = diffusion_counter;
         return copy;
+    }
+
+    public boolean diffused()
+    {
+        return this.diffusion_counter >= BOMB_DIFFUSION_THRESHOLD;
+    }
+
+    public void increaseBombDiffusionTick()
+    {
+        this.diffusion_counter++;
+    }
+
+    public int getDiffusionCounter(){
+        return diffusion_counter;
     }
 
     public ArrayList<GameObject> explode(boolean forceExplode, Types.TILETYPE[][] board, Types.TILETYPE[][] powerups) {
@@ -86,111 +71,27 @@ public class Bomb extends GameObject {
             tryToAddFlame(position.x, position.y, board, powerups, flames);
             boolean advanceP = true;
             boolean advanceM = true;
-            boolean advanceO = true;
-            boolean advanceQ = true;
-           // int explosionType = 2;
-            switch (explosionType) {
-                case 0:
-                for (int i = 1; i < blastStrength; i++) {
-                    if (advanceP) {
-                        int x1 = position.x + i;
-                        advanceP = tryToAddFlame(x1, position.y, board, powerups, flames);
-                    }
-                    if (advanceM) {
-                        int x2 = position.x - i;
-                        advanceM = tryToAddFlame(x2, position.y, board, powerups, flames);
-                    }
+            for (int i = 1; i < blastStrength; i++) {
+                if (advanceP) {
+                    int x1 = position.x + i;
+                    advanceP = tryToAddFlame(x1, position.y, board, powerups, flames);
                 }
-                advanceM = true;
-                advanceP = true;
-                for (int i = 1; i < blastStrength; i++) {
-                    if (advanceP) {
-                        int y1 = position.y + i;
-                        advanceP = tryToAddFlame(position.x, y1, board, powerups, flames);
-                    }
-                    if (advanceM) {
-                        int y2 = position.y - i;
-                        advanceM = tryToAddFlame(position.x, y2, board, powerups, flames);
-                    }
+                if (advanceM) {
+                    int x2 = position.x - i;
+                    advanceM = tryToAddFlame(x2, position.y, board, powerups, flames);
                 }
-                break;
-                case 1:
-                    for (int i = 1; i < blastStrength; i++) {
-                        if (advanceP) {
-                            int x1 = position.x + i;
-                            int x2 = position.y + i ;
-                            advanceP = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceM) {
-                            int x1 = position.x - i ;
-                            int x2 = position.y + i ;
-                            advanceM = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                    }
-                    advanceM = true;
-                    advanceP = true;
-                    for (int i = 1; i < blastStrength; i++) {
-                        if (advanceP) {
-                            int x1 = position.x + i;
-                            int x2 = position.y - i ;
-                            advanceP = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceM) {
-                            int x1 = position.x - i ;
-                            int x2 = position.y - i ;
-                            advanceM = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                    }
-                    break;
-                case 2:
-
-                    for (int i = 1; i < blastStrength; i++) {
-                        if (advanceP) {
-                            int x1 = position.x + i - 1;
-                            int x2 = position.y + i -1;
-                            advanceP = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceM) {
-                            int x1 = position.x - i + 1;
-                            int x2 = position.y + i -1 ;
-                            advanceM = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceO) {
-                            int x1 = position.x + i;
-                            advanceO = tryToAddFlame(x1, position.y, board, powerups, flames);
-                        }
-                        if (advanceQ) {
-                            int x2 = position.x - i;
-                            advanceQ = tryToAddFlame(x2, position.y, board, powerups, flames);
-                        }
-                    }
-                    advanceM = true;
-                    advanceP = true;
-                    advanceO = true;
-                    advanceQ = true;
-
-                    for (int i = 1; i < blastStrength; i++) {
-                        if (advanceP) {
-                            int x1 = position.x + i-1;
-                            int x2 = position.y - i +1;
-                            advanceP = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceM) {
-                            int x1 = position.x - i +1;
-                            int x2 = position.y - i +1;
-                            advanceM = tryToAddFlame(x1, x2, board, powerups, flames);
-                        }
-                        if (advanceO) {
-                            int y1 = position.y + i;
-                            advanceO = tryToAddFlame(position.x, y1, board, powerups, flames);
-                        }
-                        if (advanceQ) {
-                            int y2 = position.y - i;
-                            advanceQ = tryToAddFlame(position.x, y2, board, powerups, flames);
-                        }
-                    }
-                    break;
-
+            }
+            advanceM = true;
+            advanceP = true;
+            for (int i = 1; i < blastStrength; i++) {
+                if (advanceP) {
+                    int y1 = position.y + i;
+                    advanceP = tryToAddFlame(position.x, y1, board, powerups, flames);
+                }
+                if (advanceM) {
+                    int y2 = position.y - i;
+                    advanceM = tryToAddFlame(position.x, y2, board, powerups, flames);
+                }
             }
             return flames;
         }

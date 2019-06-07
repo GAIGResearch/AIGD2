@@ -1,14 +1,15 @@
 import core.Game;
-import players.*;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.mcts.LobsterPlayer;
-import players.mcts.LobsterParams;
-import players.rhea.RHEALobsterPlayer;
-import players.rhea.utils.RHEALobsterParams;
-import players.rhea.RHEAPlayer;
-import players.rhea.utils.Constants;
-import players.rhea.utils.RHEAParams;
+import core.Player;
+import nagasaki45_players.*;
+import nagasaki45_players.mcts.MCTSParams;
+import nagasaki45_players.mcts.MCTSPlayer;
+import nagasaki45_players.mcts.LobsterPlayer;
+import nagasaki45_players.mcts.LobsterParams;
+import nagasaki45_players.rhea.RHEALobsterPlayer;
+import nagasaki45_players.rhea.utils.RHEALobsterParams;
+import nagasaki45_players.rhea.RHEAPlayer;
+import nagasaki45_players.rhea.utils.Constants;
+import nagasaki45_players.rhea.utils.RHEAParams;
 import utils.*;
 
 import java.util.*;
@@ -57,7 +58,7 @@ public class Run {
 
         try {
 
-            // Create players
+            // Create nagasaki45_players
             ArrayList<Player> players = new ArrayList<>();
             int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -151,7 +152,7 @@ public class Run {
 
             Game game = new Game(seeds[0], boardSize, gMode, gameIdStr);
 
-            // Make sure we have exactly NUM_PLAYERS players
+            // Make sure we have exactly NUM_PLAYERS nagasaki45_players
             assert players.size() == Types.NUM_PLAYERS;
             game.setPlayers(players);
 

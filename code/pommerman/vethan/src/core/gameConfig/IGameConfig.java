@@ -42,7 +42,7 @@ public interface IGameConfig
     Types.TILETYPE[] getEnemies(Types.GAME_MODE gameMode, int playerID);
 
     /**
-     * Returns a multi-dimiensional array with the IDs of all players. First dimension is
+     * Returns a multi-dimiensional array with the IDs of all vethan_players. First dimension is
      * the number of teams. Second dimension is the members of each team.
      * Use Types.TILETYPE.AGENTDUMMY if teams with different sizes are built.
      * @param gameMode Game mode being used

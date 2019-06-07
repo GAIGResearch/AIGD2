@@ -1,10 +1,11 @@
 import core.Game;
-import players.*;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.rhea.RHEAPlayer;
-import players.rhea.utils.Constants;
-import players.rhea.utils.RHEAParams;
+import core.Player;
+import pommerball_players.*;
+import pommerball_players.mcts.MCTSParams;
+import pommerball_players.mcts.MCTSPlayer;
+import pommerball_players.rhea.RHEAPlayer;
+import pommerball_players.rhea.utils.Constants;
+import pommerball_players.rhea.utils.RHEAParams;
 import utils.*;
 
 import java.util.*;
@@ -52,7 +53,7 @@ public class Run {
 
         try {
 
-            // Create players
+            // Create pommerball_players
             ArrayList<Player> players = new ArrayList<>();
             int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -132,7 +133,7 @@ public class Run {
 
             Game game = new Game(seeds[0], boardSize, gMode, gameIdStr);
 
-            // Make sure we have exactly NUM_PLAYERS players
+            // Make sure we have exactly NUM_PLAYERS pommerball_players
             assert players.size() == Types.NUM_PLAYERS;
             game.setPlayers(players);
 
@@ -215,7 +216,7 @@ public class Run {
         }
 
         //Done, show stats
-        System.out.println("N \tWin \tTie \tLoss \tPlayer");
+        System.out.println("N \tWin \tTie \tLoss \tcore.Player");
         for (int pIdx = 0; pIdx < numPlayers; pIdx++) {
             String player = g.getPlayers().get(pIdx).getClass().toString().replaceFirst("class ", "");
 

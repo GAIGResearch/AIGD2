@@ -8,11 +8,9 @@ import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import core.GameState;
-import players.Player;
-import players.SimplePlayer;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.rhea.RHEAPlayer;
+import core.Player;
+import nagasaki45_players.mcts.MCTSParams;
+import nagasaki45_players.mcts.MCTSPlayer;
 import utils.Types;
 
 import java.io.BufferedReader;

@@ -1,8 +1,8 @@
 package utils;
 
 import core.Game;
-import players.HumanPlayer;
-import players.KeyController;
+import nagasaki45_players.HumanPlayer;
+import nagasaki45_players.KeyController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class GUI extends JFrame {
     private Game game;
     private AvatarView avatarDisplayPanel;
     private KeyController ki;
-    private int humanIdx;  // human player index in array of players
+    private int humanIdx;  // human player index in array of nagasaki45_players
     private boolean displayPOHuman;  // if side views should be displayed when human is playing
 
     /**
@@ -79,7 +79,7 @@ public class GUI extends JFrame {
     }
 
     /**
-     * Checks if one of the players in the game is human.
+     * Checks if one of the nagasaki45_players in the game is human.
      */
     private void checkHumanPlaying() {
         humanIdx = -1;

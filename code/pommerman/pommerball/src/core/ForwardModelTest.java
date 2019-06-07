@@ -2,9 +2,8 @@ package core;
 
 import objects.Avatar;
 import org.junit.jupiter.api.Test;
-import players.DoNothingPlayer;
-import players.Player;
-import players.SimonSaysPlayer;
+import pommerball_players.DoNothingPlayer;
+import pommerball_players.SimonSaysPlayer;
 import utils.Types;
 
 import java.util.ArrayDeque;
@@ -309,7 +308,7 @@ class ForwardModelTest {
     }
 
     /**
-     * When two players try to move into the same space, they should bounce back to their previous space
+     * When two pommerball_players try to move into the same space, they should bounce back to their previous space
      */
     @Test
     void playerPlayerMovingCollisionWorks() {

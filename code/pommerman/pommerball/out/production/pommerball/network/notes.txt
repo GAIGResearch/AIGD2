@@ -1,0 +1,10 @@
+
+World Modification Ideas
+
+variable bomb tick time
+maximum bomb radius on start
+football themed game mode (change texture of bomb to football, create non-pcg map)
+vision upgrade/mod
+bomb explosion on impact
+bomb radius as round
+teleport gates on solid blocks?

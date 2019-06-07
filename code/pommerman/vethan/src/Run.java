@@ -1,10 +1,11 @@
 import core.Game;
-import players.*;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.rhea.RHEAPlayer;
-import players.rhea.utils.Constants;
-import players.rhea.utils.RHEAParams;
+import core.Player;
+import vethan_players.*;
+import vethan_players.mcts.MCTSParams;
+import vethan_players.mcts.MCTSPlayer;
+import vethan_players.rhea.RHEAPlayer;
+import vethan_players.rhea.utils.Constants;
+import vethan_players.rhea.utils.RHEAParams;
 import utils.*;
 
 import java.util.*;
@@ -61,7 +62,7 @@ public class Run {
 
         try {
 
-            // Create players
+            // Create vethan_players
             ArrayList<Player> players = new ArrayList<>();
             int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -151,7 +152,7 @@ public class Run {
 
             Game game = new Game(danSeeds[0], boardSize, gMode, gameIdStr);
 
-            // Make sure we have exactly NUM_PLAYERS players
+            // Make sure we have exactly NUM_PLAYERS vethan_players
             assert players.size() == Types.NUM_PLAYERS;
             game.setPlayers(players);
 

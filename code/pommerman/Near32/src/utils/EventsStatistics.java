@@ -13,6 +13,7 @@ public class EventsStatistics {
 
     // TODO: Configured for 4 agents by default
     public int[] bombPlacementsAttempted = {0, 0, 0, 0};
+    public int[] bombDiffusementsAttempted = {0, 0, 0, 0};
     public int[] bombsPlaced = {0, 0, 0, 0};
     public int[] bombsTriggered = {0, 0, 0, 0};
     public int[] woodsDestroyed = {0, 0, 0, 0}; // TODO

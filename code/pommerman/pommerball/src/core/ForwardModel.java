@@ -93,7 +93,7 @@ public class ForwardModel {
      * @param intBoard Game board in int representation
      * @param bombBlastStrength Bomb blast strength array
      * @param bombLife Bomb life array
-     * @param alive Indices of players alive
+     * @param alive Indices of pommerball_players alive
      * @param game_mode Mode of game
      */
     ForwardModel(int[][] intBoard, int[][] bombBlastStrength, int[][] bombLife, int[] alive, Types.GAME_MODE game_mode){
@@ -290,7 +290,7 @@ public class ForwardModel {
         // 8. Late update bomb overlaps. In previous loop it's possible that some bombs ended up overlapping.
         checkPositionOverlap(bombs, board, VERBOSE_FM_DEBUG && trueModel);
 
-        // If bombs were bounced back, then they may overlap players again, bounce players back too if players moved.
+        // If bombs were bounced back, then they may overlap pommerball_players again, bounce pommerball_players back too if pommerball_players moved.
         for (GameObject b: bombs) {
             for (GameObject p : agents) {
                 if (!p.getDesiredCoordinate().equals(p.getPosition()) &&
@@ -395,11 +395,11 @@ public class ForwardModel {
                 if (p.getDesiredCoordinate().equals(b.getDesiredCoordinate())) {
                     // Agent tried to move onto bomb OR bomb tried to move onto agent, check if agent can kick
                     if (((Avatar)p).canKick()) {
-                        // Player can kick, so set bomb velocity
+                        // core.Player can kick, so set bomb velocity
                         Vector2d velocity = p.getDesiredCoordinate().subtract(p.getPosition());
                         ((Bomb)b).setVelocity(velocity);
 
-                        // First bomb move on the same tick as the kick happened. Do not move into players or walls.
+                        // First bomb move on the same tick as the kick happened. Do not move into pommerball_players or walls.
                         // If bomb couldn't move, reset its velocity
                         ArrayList<Types.TILETYPE> collisions = new ArrayList<>();
                         collisions.add(Types.TILETYPE.RIGID);
@@ -590,7 +590,7 @@ public class ForwardModel {
                 }
                 o.setPosition(nextPos.copy());
 
-                HashSet<Types.TILETYPE> powerUpTypes = Types.TILETYPE.getPowerUpTypes();
+                HashSet<Types.TILETYPE> powerUpTypes = Types.TILETYPE.getPowerUpTypes_nagasaki45();
                 HashSet<Types.TILETYPE> agentTypes = TILETYPE.getAgentTypes();
 
                 // Set up sprites that cannot be replaced with a passage when current sprite moves from its square.
@@ -766,7 +766,7 @@ public class ForwardModel {
                     } else if (Types.TILETYPE.getAgentTypes().contains(type)) {
                         int idx = type.getKey() - 10;
                         addAgent(j, i, idx);
-                    } else if (Types.TILETYPE.getPowerUpTypes().contains(type)) {
+                    } else if (Types.TILETYPE.getPowerUpTypes_nagasaki45().contains(type)) {
                         addPowerUp(j, i, type, true);
                     } else {
                         // All other objects are simply added: walls, passage, fog
@@ -865,7 +865,7 @@ public class ForwardModel {
                 GameObject ob = agents[type.getKey() - 10];
                 ((Avatar)ob).setWinner(RESULT.LOSS);
                 aliveAgents.remove(ob);
-            } else if (TILETYPE.getPowerUpTypes().contains(type)) {
+            } else if (TILETYPE.getPowerUpTypes_nagasaki45().contains(type)) {
                 powerups[y][x] = null;
             }
         }
@@ -914,7 +914,7 @@ public class ForwardModel {
             }
         }
 
-        // Add players in the corners
+        // Add pommerball_players in the corners
         addAgent(1, 1, 0);
         addAgent(board.length - 2, 1, 1);
         addAgent(1, board[1].length - 2, 2);
@@ -1011,7 +1011,7 @@ public class ForwardModel {
         }
 
         // Reduce arraylists of flames and bombs
-        // Reset flames life if playerIdx > -1, players don't know this information
+        // Reset flames life if playerIdx > -1, pommerball_players don't know this information
         _reduceHiddenList(flames, copy.flames, avatarPosition, range);
         _reduceHiddenList(bombs, copy.bombs, avatarPosition, range);
         copy.aliveAgents = findAliveAgents(copy.agents);

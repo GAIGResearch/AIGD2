@@ -21,9 +21,9 @@
 67054, 18/20, [LOSS, LOSS, LOSS, WIN]
 19508, 19/20, [LOSS, LOSS, LOSS, WIN]
 N 	Win 	Tie 	Loss 	Player
-20	0.0%	0.0%	100.0%	players.OSLAPlayer
-20	0.0%	40.0%	60.0%	players.rhea.RHEAPlayer
-20	0.0%	30.0%	70.0%	players.rhea.RHEAPlayer
-20	40.0%	60.0%	0.0%	players.mcts.MCTSPlayer
+20	0.0%	0.0%	100.0%	vethan_players.OSLAPlayer
+20	0.0%	40.0%	60.0%	vethan_players.rhea.RHEAPlayer
+20	0.0%	30.0%	70.0%	vethan_players.rhea.RHEAPlayer
+20	40.0%	60.0%	0.0%	vethan_players.mcts.MCTSPlayer
 
 Process finished with exit code 0

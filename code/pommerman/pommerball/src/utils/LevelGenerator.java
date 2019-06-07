@@ -12,7 +12,7 @@ public class LevelGenerator {
 
 
     /**
-     * Constructs the board: places players and blocks in the level,
+     * Constructs the board: places pommerball_players and blocks in the level,
      * guaranteeing a maximum of accessible passages.
      * @param seed Unique seed to generate this board.
      * @param size size of the board (size x size)
@@ -57,7 +57,7 @@ public class LevelGenerator {
         int[][] items = new int[board.length][board[0].length];     //Items will be here.
 
         //All items to place.
-        Types.TILETYPE[] powerUpTypes = Types.TILETYPE.getPowerUpTypes().toArray(new Types.TILETYPE[0]);
+        Types.TILETYPE[] powerUpTypes = Types.TILETYPE.getPowerUpTypes_nagasaki45().toArray(new Types.TILETYPE[0]);
 
         //Count how many wood boxes we have to put items in
         int numberOfWood = 0;
@@ -89,7 +89,7 @@ public class LevelGenerator {
     }
 
     /**
-     * Constructs a board: places players and blocks in the level. Doesn't check of inaccessible passages.
+     * Constructs a board: places pommerball_players and blocks in the level. Doesn't check of inaccessible passages.
      * @param seed Unique seed to generate this board.
      * @param size size of the board (size x size)
      * @param numRigid number of rigid, non-destructible, blocks to put in the board.
@@ -123,7 +123,7 @@ public class LevelGenerator {
             }
         }
 
-        // Locate all the players in the board. they must respect a Types.CORNER_DISTANCE to
+        // Locate all the pommerball_players in the board. they must respect a Types.CORNER_DISTANCE to
         // their respective corners.
         board[Types.CORNER_DISTANCE][Types.CORNER_DISTANCE] = Types.TILETYPE.AGENT0.getKey();
         board[size-Types.CORNER_DISTANCE -1][Types.CORNER_DISTANCE] = Types.TILETYPE.AGENT1.getKey();

@@ -2,8 +2,7 @@ package core;
 
 import objects.Avatar;
 import objects.GameObject;
-import players.Player;
-import players.SimonSaysPlayer;
+import pommerball_players.SimonSaysPlayer;
 import utils.GUI;
 import utils.GameLog;
 import utils.Types;
@@ -23,10 +22,10 @@ public class Game {
     // State of the game (objects, ticks, etc).
     private GameState gs;
 
-    // GameState objects for players to make decisions
+    // GameState objects for pommerball_players to make decisions
     private GameState[] gameStateObservations;
 
-    // List of players of the game
+    // List of pommerball_players of the game
     private ArrayList<Player> players;
 
     // Mode of the game being played. This could be FFA, TEAM or TEAM_RADIO.
@@ -135,7 +134,7 @@ public class Game {
     }
 
     /**
-     * @return an exact copy of this game, including players, current game state and state observations.
+     * @return an exact copy of this game, including pommerball_players, current game state and state observations.
      */
     public Game copy() {
         Game copy = new Game(gs);
@@ -155,7 +154,7 @@ public class Game {
     }
 
     /**
-     * Sets the players of the game and initializes the array to hold their game states.
+     * Sets the pommerball_players of the game and initializes the array to hold their game states.
      * @param players Players of the game.
      */
     public void setPlayers(ArrayList<Player> players) {
@@ -163,8 +162,8 @@ public class Game {
     }
 
     /**
-     * Retuns the players of the game
-     * @return the players of the game
+     * Retuns the pommerball_players of the game
+     * @return the pommerball_players of the game
      */
     public ArrayList<Player> getPlayers() {
         return players;
@@ -349,7 +348,7 @@ public class Game {
     }
 
     /**
-     * Creates actor objects for the players.
+     * Creates actor objects for the pommerball_players.
      */
     public void createActors() {
         for (int i = 0; i < NUM_PLAYERS; i++)
@@ -368,7 +367,7 @@ public class Game {
     }
 
     /**
-     * Updates the state observations for all players.
+     * Updates the state observations for all pommerball_players.
      */
     private void updateAssignedGameStates() {
         if (gameStateObservations == null) {
@@ -392,8 +391,8 @@ public class Game {
     }
 
     /**
-     * This method terminates the game, assigning the winner/result state to all players.
-     * @return an array of result states for all players.
+     * This method terminates the game, assigning the winner/result state to all pommerball_players.
+     * @return an array of result states for all pommerball_players.
      */
     @SuppressWarnings("UnusedReturnValue")
     private Types.RESULT[] terminate() {
@@ -433,7 +432,7 @@ public class Game {
      * Returns the board of the game, in the format of a bidimensional array where each
      * position includes a game object that occupies it. If partial observability is enabled,
      * the method hides that information that the player (pIdx) can't access.
-     * @param pIdx Player index that this board is made for.
+     * @param pIdx core.Player index that this board is made for.
      * @return board of the game
      */
     public Types.TILETYPE[][] getBoard(int pIdx) {
@@ -464,8 +463,8 @@ public class Game {
     }
 
     /**
-     * Returns number of players in the game
-     * @return number of players in the game
+     * Returns number of pommerball_players in the game
+     * @return number of pommerball_players in the game
      */
     public int nPlayers() {
         return NUM_PLAYERS;
@@ -517,7 +516,7 @@ public class Game {
     }
 
     /**
-     * Returns the last game logged, with SimonSays players executing the logged action sequences, the saved seed,
+     * Returns the last game logged, with SimonSays pommerball_players executing the logged action sequences, the saved seed,
      * initial state and game mode.
      * @return - last game logged.
      */

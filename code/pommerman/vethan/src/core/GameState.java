@@ -109,7 +109,7 @@ public class GameState {
     }
 
     /**
-     * For debug purposes only: shows the current state of winners for all players.
+     * For debug purposes only: shows the current state of winners for all vethan_players.
      */
     private void computeResults()
     {

@@ -10,7 +10,7 @@ import utils.Types;
 import utils.Vector2d;
 
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Random;
 
 import static utils.Types.*;
 import static utils.Utils.*;
@@ -26,6 +26,11 @@ public class ForwardModel {
     // Lives of bombs mapped on board structure
     private int[][] bombLife;
 
+    // Diffusion counters of bombs mapped on board structure
+    private int[][] bombDiffusionCounter;
+
+    private Types.DIFFUSION_RULE diffusion_rule;
+
     // Power-ups of the game, hidden. All power-ups are distributed in a 2D array of size 'this.size x this.size'
     private Types.TILETYPE[][] powerups;
 
@@ -39,8 +44,6 @@ public class ForwardModel {
     // Current bombs in the game. They explode!
     private ArrayList<GameObject> bombs;
 
-    private ArrayList<Vector2d> portals = new ArrayList<>();
-
     // Size of the board.
     private int size;
 
@@ -52,9 +55,6 @@ public class ForwardModel {
 
     // Game tick counter as in GameState, for logging purposes (only valid for true model of the game)
     private int tick;
-
-    private  Random random;
-    int lastTimePortal=portalTimeWindow;
 
     // Event statistics
     private EventsStatistics es;
@@ -68,7 +68,27 @@ public class ForwardModel {
     ForwardModel(int size, Types.GAME_MODE game_mode) {
         this.size = size;
         this.game_mode = game_mode;
-        this.random = new Random();
+
+        init_diffusion_rule(game_mode);
+    }
+
+    private void init_diffusion_rule(Types.GAME_MODE game_mode)
+    {
+        if(game_mode == GAME_MODE.FFA){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+        if(game_mode == GAME_MODE.TEAM){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+        if(game_mode == GAME_MODE.TEAM_RADIO){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+
+        if(game_mode == GAME_MODE.FFA_GETAMMO){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+        if(game_mode == GAME_MODE.TEAM_GETAMMO){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+        if(game_mode == GAME_MODE.TEAM_RADIO_GETAMMO){ this.diffusion_rule = Types.DIFFUSION_RULE.GET_AMMO;}
+
+        if(game_mode == GAME_MODE.FFA_TELEPORT){ this.diffusion_rule = Types.DIFFUSION_RULE.TELEPORT;}
+        if(game_mode == GAME_MODE.TEAM_TELEPORT){ this.diffusion_rule = Types.DIFFUSION_RULE.TELEPORT;}
+        if(game_mode == GAME_MODE.TEAM_RADIO_TELEPORT){ this.diffusion_rule = Types.DIFFUSION_RULE.TELEPORT;}
+
+        if(game_mode == GAME_MODE.FFA_RANDOM){ this.diffusion_rule = Types.DIFFUSION_RULE.RANDOM;}
+        if(game_mode == GAME_MODE.TEAM_RANDOM){ this.diffusion_rule = Types.DIFFUSION_RULE.RANDOM;}
+        if(game_mode == GAME_MODE.TEAM_RADIO_RANDOM){ this.diffusion_rule = Types.DIFFUSION_RULE.RANDOM;}
     }
 
     /**
@@ -80,6 +100,9 @@ public class ForwardModel {
     ForwardModel(long seed, int size, Types.GAME_MODE game_mode) {
         this.size = size;
         this.game_mode = game_mode;
+
+
+        init_diffusion_rule(game_mode);
         init(seed, size, game_mode, null, null);
     }
 
@@ -92,6 +115,9 @@ public class ForwardModel {
     ForwardModel(long seed, int[][] intBoard, Types.GAME_MODE game_mode) {
         size = intBoard.length;
         this.game_mode = game_mode;
+
+
+        init_diffusion_rule(game_mode);
         init(seed, intBoard.length, game_mode, intBoard, null);
     }
 
@@ -100,7 +126,7 @@ public class ForwardModel {
      * @param intBoard Game board in int representation
      * @param bombBlastStrength Bomb blast strength array
      * @param bombLife Bomb life array
-     * @param alive Indices of players alive
+     * @param alive Indices of near32_players alive
      * @param game_mode Mode of game
      */
     ForwardModel(int[][] intBoard, int[][] bombBlastStrength, int[][] bombLife, int[] alive, Types.GAME_MODE game_mode){
@@ -111,7 +137,10 @@ public class ForwardModel {
         init(10, intBoard.length, game_mode, intBoard, alive);
         this.bombBlastStrength = bombBlastStrength;
         this.bombLife = bombLife;
+        this.bombDiffusionCounter= new int[size][size];
 
+
+        init_diffusion_rule(game_mode);
         // get alive agents
         for (GameObject agent : agents){
             ((Avatar)(agent)).setWinner(Types.RESULT.LOSS);
@@ -123,7 +152,7 @@ public class ForwardModel {
             for (int y = 0; y < size; y++) {
                 Types.TILETYPE type = utils.Types.TILETYPE.values()[intBoard[y][x]];
                 if (type == Types.TILETYPE.BOMB){
-                    addBomb(x, y, bombBlastStrength[y][x], bombLife[y][x], -1, true,false);
+                    addBomb(x, y, bombBlastStrength[y][x], bombLife[y][x], -1, true);
                 } else if (type == Types.TILETYPE.FLAMES){
                     addFlame(x, y, FLAME_LIFE);
                 } else if (agentTypes.contains(type)){
@@ -132,7 +161,7 @@ public class ForwardModel {
 
                 // Check last if there is a bomb that should be added to the bomb array, but not to the board
                 if (bombBlastStrength[y][x] > 0 && type != Types.TILETYPE.BOMB) {
-                    addBomb(x, y, bombBlastStrength[y][x], bombLife[y][x], -1, false, false);
+                    addBomb(x, y, bombBlastStrength[y][x], bombLife[y][x], -1, false);
                 }
             }
         }
@@ -161,8 +190,6 @@ public class ForwardModel {
     void init(long seed, int size, Types.GAME_MODE gameMode, int[][] intBoard, int[] alive) {
         flames = new ArrayList<>();
         bombs = new ArrayList<>();
-        this.random = new Random(seed);
-        portals = new ArrayList<>();
 
         boolean noBoard = false;
         if (intBoard == null) {
@@ -175,6 +202,7 @@ public class ForwardModel {
         //boardObs = new int[size][size];
         bombBlastStrength = new int[size][size];
         bombLife = new int[size][size];
+        bombDiffusionCounter= new int[size][size];
 
         HashSet<Types.TILETYPE> agentTypes = Types.TILETYPE.getAgentTypes();
         agents = new GameObject[agentTypes.size()];
@@ -203,14 +231,6 @@ public class ForwardModel {
             isAgentStuck = new boolean[]{false, false, false, false};
             es = new EventsStatistics();
         }
-
-        for(int x = 0; x < size; x += 1) {
-            for(int y = 0; y < size; y += 1) {
-                if(board[x][y].getKey()==TILETYPE.TELEPORT.getKey()){
-                    portals.add(new Vector2d(y,x));
-                }
-            }
-        }
     }
 
     /**
@@ -225,6 +245,9 @@ public class ForwardModel {
     int[][] getBombLife() {
         return bombLife;
     }
+    int[][] getBombDiffusionCounter() {
+        return bombDiffusionCounter;
+    }
     GameObject[] getAgents() {
         return agents;
     }
@@ -238,49 +261,9 @@ public class ForwardModel {
      */
     ForwardModel copy(int playerIdx) {
         ForwardModel copy = new ForwardModel(size, game_mode);
-        copy.portals = new ArrayList<>(portals);
-        copy.lastTimePortal = lastTimePortal;
         copy.trueModel = false;  // This is a copy, not the true model
         reduce(copy, playerIdx);
         return copy;
-    }
-
-    void spreadAgentBuffs(ArrayList<GameObject> deadAgentsThisTick) {
-        List<TILETYPE> powerupsToSpread = deadAgentsThisTick.stream().map(a -> (Avatar) a).flatMap(agent -> {
-                    ArrayList<TILETYPE> tt = new ArrayList<>();
-                    if (agent.canKick())
-                        tt.add(TILETYPE.KICK);
-
-                    if (agent.hasRemoteBomb())
-                        tt.add(TILETYPE.REMOTEBOMB);
-
-                    for (int i = 1; i < agent.getMaxAmmo(); i++)
-                        tt.add(TILETYPE.EXTRABOMB);
-
-                    for (int i = 1; i < agent.getBlastStrength(); i++)
-                        tt.add(TILETYPE.INCRRANGE);
-
-                    return tt.stream();
-                }
-
-        ).collect(Collectors.toList());
-
-        List<Vector2d> availablePositions = new ArrayList<>();
-        for(int x = 0; x < board.length;x++)
-            for (int y =0; y < board[0].length; y++) {
-                if(board[x][y] == TILETYPE.PASSAGE) {
-                    availablePositions.add(new Vector2d(x,y));
-                }
-            }
-
-            while (availablePositions.size() > 0 && powerupsToSpread.size() > 0) {
-                int posIndex = this.random.nextInt(availablePositions.size());
-                Vector2d pos = availablePositions.get(posIndex);
-                availablePositions.remove(posIndex);
-                board[pos.x][pos.y] = powerupsToSpread.get(0);
-                powerupsToSpread.remove(0);
-            }
-
     }
 
     /**
@@ -291,13 +274,13 @@ public class ForwardModel {
      * @param playerActions player actions to execute in this game state.
      */
     void next(Types.ACTIONS[] playerActions) {
+
         if (VERBOSE_FM_DEBUG && trueModel) {
             System.out.println();
         }
 
         // 1. Put actions into effect
         translatePlayerActions(playerActions);
-        lastTimePortal --;
 
         if (VERBOSE_FM_DEBUG && trueModel) {
             for (GameObject o : aliveAgents) {
@@ -315,6 +298,9 @@ public class ForwardModel {
                 deadFlames.add(f);
             }
         }
+
+
+
 
         // 3. Agents already have desired positions set from GameState call according to their chosen actions
         // 4. Tick bombs, they set their desired position in the tick() method as well as their life. They also
@@ -344,7 +330,7 @@ public class ForwardModel {
         // 8. Late update bomb overlaps. In previous loop it's possible that some bombs ended up overlapping.
         checkPositionOverlap(bombs, board, VERBOSE_FM_DEBUG && trueModel);
 
-        // If bombs were bounced back, then they may overlap players again, bounce players back too if players moved.
+        // If bombs were bounced back, then they may overlap near32_players again, bounce near32_players back too if near32_players moved.
         for (GameObject b: bombs) {
             for (GameObject p : agents) {
                 if (!p.getDesiredCoordinate().equals(p.getPosition()) &&
@@ -388,13 +374,6 @@ public class ForwardModel {
         }
         flames.removeAll(deadFlames);
 
-        // 11.B Put back portals
-        for(Vector2d portalPos: portals){
-            if (board[portalPos.y][portalPos.x] == TILETYPE.PASSAGE) {
-                board[portalPos.y][portalPos.x]= TILETYPE.TELEPORT;
-            }
-        }
-
         // 12. Add flames left alive back into the board if missing. Multiple flames may share a position, and the board
         // Should contain a flame until all flames are dead.
         for (GameObject f : flames) {
@@ -411,19 +390,33 @@ public class ForwardModel {
 
         // 14. Check for terminated agents
         if(deadAgentsThisTick.size() > 0) {
-            spreadAgentBuffs(deadAgentsThisTick);
             Types.getGameConfig().processDeadAgents(agents, aliveAgents, deadAgentsThisTick, game_mode);
         }
 
         // 15. Update observable board grids of item types, bomb blast strengths, bomb lives
         bombBlastStrength = new int[size][size];
         bombLife = new int[size][size];
+        bombDiffusionCounter= new int[size][size];
 
         for(GameObject bombObject : bombs){
             Bomb bomb = (Bomb) bombObject;
             Vector2d position = bomb.getPosition();
             bombBlastStrength[position.y][position.x] = bomb.getBlastStrength();
             bombLife[position.y][position.x] = bomb.getLife();
+            bombDiffusionCounter[position.y][position.x] = bomb.getDiffusionCounter();
+        }
+
+        // add a flame wall every WALL_SPEED ticks.
+        // If there is already a flame, the wall won't override its life.
+
+        //update the wall clock
+        // add a flame wall every WALL_SPEED ticks.
+        WALL_CLOCK++;
+        if (WALL_CLOCK == WALL_SPEED)
+        {
+            WALL_LAYER = WALL_LAYER+1;
+            addWallOfFire(WALL_LAYER);
+            WALL_CLOCK = 0;
         }
 
         // 16. Logging
@@ -444,6 +437,30 @@ public class ForwardModel {
         }
     }
 
+    private void addWallOfFire(int wall_layer)
+    {
+        for (int x = 0; x < Types.BOARD_SIZE; x++)
+        {
+            for (int y = 0; y < BOARD_SIZE; y++)
+            {
+                if (x == wall_layer - 1 || x == (Types.BOARD_SIZE) - wall_layer || y == wall_layer -1 || y == (Types.BOARD_SIZE) - wall_layer)
+                {
+                    // flames are added here
+                    addFlame(x, y, Types.WALL_LIFE);
+                    //flame life is overwritten here (if there is another flame)
+                    for (GameObject flame_obj : flames)
+                    {
+                        Flame flame = (Flame)flame_obj;
+                        if(flame.getPosition().x == x && flame.getPosition().y == y)
+                        {
+                            flame.setLife(Types.WALL_LIFE);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
     /**
      * Handles the movement of bombs, including kicking them if the agent can do so.
      */
@@ -461,7 +478,7 @@ public class ForwardModel {
                         Vector2d velocity = p.getDesiredCoordinate().subtract(p.getPosition());
                         ((Bomb)b).setVelocity(velocity);
 
-                        // First bomb move on the same tick as the kick happened. Do not move into players or walls.
+                        // First bomb move on the same tick as the kick happened. Do not move into near32_players or walls.
                         // If bomb couldn't move, reset its velocity
                         ArrayList<Types.TILETYPE> collisions = new ArrayList<>();
                         collisions.add(Types.TILETYPE.RIGID);
@@ -652,7 +669,7 @@ public class ForwardModel {
                 }
                 o.setPosition(nextPos.copy());
 
-                Set<Types.TILETYPE> powerUpTypes = Types.TILETYPE.getPowerUpTypes().keySet();
+                HashSet<Types.TILETYPE> powerUpTypes = Types.TILETYPE.getPowerUpTypes_nagasaki45();
                 HashSet<Types.TILETYPE> agentTypes = TILETYPE.getAgentTypes();
 
                 // Set up sprites that cannot be replaced with a passage when current sprite moves from its square.
@@ -690,10 +707,6 @@ public class ForwardModel {
         board[nextPos.y][nextPos.x] = o.getType();
     }
 
-    boolean onPortal(Vector2d pos){
-        return portals.contains(pos);
-    }
-
     /**
      * Function to insert player action effects into the game.
      * Index in actions array is the same as in aliveAgents array.
@@ -719,29 +732,13 @@ public class ForwardModel {
                 action = Types.ACTIONS.ACTION_STOP;
             }
 
-            Vector2d nextPosition = pos.add(action.getDirection().toVec());
-            boolean successful = setDesiredCoordinate(agent, nextPosition, board);
-            boolean steppedOnPortal = onPortal(nextPosition);
-            if(successful){
-
-                if(steppedOnPortal){
-                    if(lastTimePortal<0) {
-                        lastTimePortal = portalTimeWindow;
-                        if (portals.get(0).equals(nextPosition)) {
-                            nextPosition = portals.get(1);
-                        } else {
-                            nextPosition = portals.get(0);
-                        }
-                        agent.setDesiredCoordinate(nextPosition);
-                    }
-                }
-            }
+            boolean successful = setDesiredCoordinate(agent, pos.add(action.getDirection().toVec()), board);
 
             if (action == Types.ACTIONS.ACTION_BOMB) {
                 if (agent.getAmmo() > 0 && bombBlastStrength[pos.y][pos.x] == 0) {
                     // Check if a bomb is not already there
                     agent.reduceAmmo();
-                    addBomb(pos.x, pos.y, agent.getBlastStrength(), BOMB_LIFE, i, true, agent.hasRemoteBomb());
+                    addBomb(pos.x, pos.y, agent.getBlastStrength(), BOMB_LIFE, i, true);
                     successful = true;
                     if(trueModel && LOGGING_STATISTICS) {
                         int agentID = (agent.getPlayerID() - 10);
@@ -763,22 +760,38 @@ public class ForwardModel {
                 }
             }
 
-            if(action == ACTIONS.ACTION_ACTIVATE) {
-                successful = false;
-                for (GameObject bomb1 : bombs) {
-                    Bomb bomb = (Bomb) bomb1;
-                    if (bomb.getPlayerIdx() == i && bomb.getLife() > 0 && bomb.isRemote()) {
-                        bomb.triggerRemotely();
-                        successful = true;
-                        break;
-                    }
-                    if(trueModel && LOGGING_STATISTICS) {
+            if (action == Types.ACTIONS.ACTION_DIFFUSE)
+            {
+                // Check that there is a bomb is the neighbourhood of the agent:
+                Bomb bomb = (Bomb) checkNeighbourhoodForBomb(pos.x, pos.y);
+                if ( bomb != null)
+                {
+                    diffuseBomb(bomb, agent); //diffuse the bomb by reducing its diffuse_life
+                    successful = true;
+                    if(trueModel && LOGGING_STATISTICS)
+                    {
                         int agentID = (agent.getPlayerID() - 10);
-                        String eventString = tick + " | [" + agentID + "] failed to activate remote bomb\n";
+                        String eventString = tick + " | [" + agentID + "] diffused a bomb around ("
+                                +  pos.x + ", " + pos.y + ")\n";
                         es.events.add(eventString);
+                        es.bombsPlaced[agentID]++;
+                        es.bombDiffusementsAttempted[agentID]++;
+                    }
+                }
+                else
+                {
+                    successful = false;
+                    if(trueModel && LOGGING_STATISTICS)
+                    {
+                        int agentID = (agent.getPlayerID() - 10);
+                        String eventString = tick + " | [" + agentID + "] failed to diffuse a bomb around ("
+                                +  pos.x + ", " + pos.y + ")\n";
+                        es.events.add(eventString);
+                        es.bombDiffusementsAttempted[agentID]++;
                     }
                 }
             }
+
             if (successful && action != Types.ACTIONS.ACTION_STOP && trueModel) {
                 if (VERBOSE_FM_DEBUG) {
                     System.out.println(agent.getType() + " playing action " + action + " " + action.getDirection()
@@ -798,7 +811,6 @@ public class ForwardModel {
         if (x >= 0 && x < size && y >= 0 && y < size) {
             if (board[y][x] == Types.TILETYPE.EXTRABOMB) {
                 p.addAmmo();
-                p.addMaxAmmo();
                 if(trueModel && LOGGING_STATISTICS) {
                     String eventString = tick + " | [" + (p.getPlayerID() - 10) + "] picked up AMMO at ("
                             +  x + ", " + y + ")\n";
@@ -822,15 +834,6 @@ public class ForwardModel {
                     es.powerUpsTaken[p.getPlayerID() - 10]++;
                 }
             }
-            else if (board[y][x] == TILETYPE.REMOTEBOMB) {
-                p.setRemote();
-                if(trueModel && LOGGING_STATISTICS) {
-                    String eventString = tick + " | [" + (p.getPlayerID() - 10) + "] picked up REMOTE BOMB at ("
-                            +  x + ", " + y + ")\n";
-                    es.events.add(eventString);
-                    es.powerUpsTaken[p.getPlayerID() - 10]++;
-                }
-            }
         }
     }
 
@@ -839,7 +842,7 @@ public class ForwardModel {
      * It uses Types.BOARD_* to decide number of rigid blocks, wood, items, etc.
      */
     private void generateBoard(long seed) {
-        int[][] intBoard = LevelGenerator.makeBoard(seed, size,  Types.WOOD_PROBABILITY, agents);
+        int[][] intBoard = LevelGenerator.makeBoard(seed, size, Types.BOARD_NUM_RIGID, Types.BOARD_NUM_WOOD, agents);
         generateBoard(intBoard, seed);
     }
 
@@ -847,7 +850,7 @@ public class ForwardModel {
      * Generates the game board given an intBoard that will be translated.
      */
     private void generateBoard(int[][] intBoard, long seed) {
-        int[][] intPowerups = LevelGenerator.makeItems(intBoard, Types.ITEM_BREAK_PROBABILITY, seed);
+        int[][] intPowerups = LevelGenerator.makeItems(intBoard, Types.BOARD_NUM_ITEMS, seed);
         translate(intBoard, true);
         translate(intPowerups, false);
     }
@@ -868,13 +871,13 @@ public class ForwardModel {
                 for (int j = 0; j < intBoard[i].length; j++) {
                     Types.TILETYPE type = utils.Types.TILETYPE.values()[intBoard[i][j]];
                     if (type == Types.TILETYPE.BOMB) {
-                        addBomb(j, i, DEFAULT_BOMB_BLAST, BOMB_LIFE, -1, true, false);
+                        addBomb(j, i, DEFAULT_BOMB_BLAST, BOMB_LIFE, -1, true);
                     } else if (type == Types.TILETYPE.FLAMES) {
                         addFlame(j, i, FLAME_LIFE);
                     } else if (Types.TILETYPE.getAgentTypes().contains(type)) {
                         int idx = type.getKey() - 10;
                         addAgent(j, i, idx);
-                    } else if (Types.TILETYPE.getPowerUpTypes().keySet().contains(type)) {
+                    } else if (Types.TILETYPE.getPowerUpTypes_nagasaki45().contains(type)) {
                         addPowerUp(j, i, type, true);
                     } else {
                         // All other objects are simply added: walls, passage, fog
@@ -896,8 +899,8 @@ public class ForwardModel {
 
     // add* methods can be used by agents to insert things into the model
 
-    void addBomb(int x, int y, int blastStrength, int bombLife, int playerIdx, boolean addToBoard, boolean remote) {
-        Bomb bomb = new Bomb(blastStrength, bombLife, playerIdx, remote);
+    void addBomb(int x, int y, int blastStrength, int bombLife, int playerIdx, boolean addToBoard) {
+        Bomb bomb = new Bomb(blastStrength, bombLife, playerIdx);
         bomb.setPosition(new Vector2d(x, y));
         setDesiredCoordinate(bomb, new Vector2d(x, y), board);
         bombs.add(bomb);
@@ -906,6 +909,62 @@ public class ForwardModel {
         }
     }
 
+    // check the neighbourhood for tany bombs?
+    GameObject checkNeighbourhoodForBomb(int x, int y)
+    {
+        for (GameObject b : bombs)
+        {
+            Vector2d pos = b.getPosition();
+            int dx = pos.x-x;
+            int dy = pos.y-y;
+            if ( dx >= -1 && dx <= 1 && dy >= -1 && dy <= 1)
+            {
+                return b;
+            }
+        }
+
+        return null;
+    }
+
+    void diffuseBomb(Bomb bomb, Avatar agent)
+    {
+        bomb.increaseBombDiffusionTick();
+
+        if( bomb.diffused() )
+        {
+            int choice = diffusion_rule.getKey();
+            if( diffusion_rule == Types.DIFFUSION_RULE.RANDOM)
+            {
+                Random rand = new Random();
+                choice = rand.nextInt(2);
+            }
+
+            Vector2d currentPos = bomb.getPosition();
+
+            switch (choice)
+            {
+                case 0: //GET_AMMO
+                    agent.addAmmo();
+                    bombs.remove(bomb);
+                    removeObject(currentPos.x,currentPos.y, TILETYPE.BOMB,true);
+                    break;
+
+                case 1: //TELEPORT
+                    Random rand = new Random();
+                    int x = 0;
+                    int y = 0;
+                    do
+                    {
+                        x = rand.nextInt(this.size);;
+                        y = rand.nextInt(this.size);;
+                    }while( !(board[x][y] == TILETYPE.PASSAGE && x!=currentPos.x && y!=currentPos.y) );
+
+                    bombs.remove(bomb);
+                    removeObject(currentPos.x,currentPos.y, TILETYPE.BOMB,true);
+                    addBomb(x,y,bomb.getBlastStrength(),bomb.getLife(),bomb.getPlayerIdx(),true);
+            }
+        }
+    }
     void addFlame(int x, int y, int life) {
         Flame flame = new Flame();
         flame.setLife(life);
@@ -915,12 +974,13 @@ public class ForwardModel {
         board[y][x] = Types.TILETYPE.FLAMES;
     }
 
+
     void addPowerUp(int x, int y, Types.TILETYPE type, boolean visible) {
         Types.TILETYPE[][] targetArray;
         if (visible) targetArray = board;
         else targetArray = powerups;
 
-        if (Types.TILETYPE.getPowerUpTypes().keySet().contains((type))) {
+        if (type == Types.TILETYPE.EXTRABOMB || type == Types.TILETYPE.INCRRANGE || type == Types.TILETYPE.KICK) {
             addObject(x, y, type, targetArray);
         }
     }
@@ -973,7 +1033,7 @@ public class ForwardModel {
                 GameObject ob = agents[type.getKey() - 10];
                 ((Avatar)ob).setWinner(RESULT.LOSS);
                 aliveAgents.remove(ob);
-            } else if (TILETYPE.getPowerUpTypes().keySet().contains(type)) {
+            } else if (TILETYPE.getPowerUpTypes_nagasaki45().contains(type)) {
                 powerups[y][x] = null;
             }
         }
@@ -1022,7 +1082,7 @@ public class ForwardModel {
             }
         }
 
-        // Add players in the corners
+        // Add near32_players in the corners
         addAgent(1, 1, 0);
         addAgent(board.length - 2, 1, 1);
         addAgent(1, board[1].length - 2, 2);
@@ -1095,17 +1155,14 @@ public class ForwardModel {
 
         // Agents and aliveAgents do not get reduced. But their position is removed if we don't know where they are.
         copy.agents = deepCopy(agents);
-        for (int i = 0; i < copy.agents.length; i++) {
-            Avatar a = (Avatar)agents[i];
+        for (GameObject a: copy.agents) {
             if (range != -1 && a.getPosition() != null && a.getPosition().custom_dist(avatarPosition) > range) {
                 // This agent's position is not observed
                 a.setPosition(null);
                 a.setDesiredCoordinate(null);
             }
             // If not player observing, reset properties to default
-            if(i != playerIdx) {
-                //((Avatar)a).reset();
-            }
+            //((Avatar)a).reset();
         }
 
         // Reduce power-ups and board arrays
@@ -1122,7 +1179,7 @@ public class ForwardModel {
         }
 
         // Reduce arraylists of flames and bombs
-        // Reset flames life if playerIdx > -1, players don't know this information
+        // Reset flames life if playerIdx > -1, near32_players don't know this information
         _reduceHiddenList(flames, copy.flames, avatarPosition, range);
         _reduceHiddenList(bombs, copy.bombs, avatarPosition, range);
         copy.aliveAgents = findAliveAgents(copy.agents);
@@ -1166,10 +1223,4 @@ public class ForwardModel {
             return false;
         return true;
     }
-
-    public int getBombsPlanted(int playerID) {
-        Avatar agent = (Avatar) agents[playerID];
-        return agent.getMaxAmmo() - agent.getAmmo();
-    }
-
 }

@@ -12,17 +12,18 @@ public class LevelGenerator {
 
 
     /**
-     * Constructs the board: places players and blocks in the level,
+     * Constructs the board: places near32_players and blocks in the level,
      * guaranteeing a maximum of accessible passages.
      * @param seed Unique seed to generate this board.
      * @param size size of the board (size x size)
-     * @param woodProb likelyhood of a free tile being a wooden, destructible, block
+     * @param numRigid number of rigid, non-destructible, blocks to put in the board.
+     * @param numWood number of wooden, destructible, blocks to put in the board.
      * @param agents Agents to put in the game.
      * @return board created by this algorithm
      */
-    public static int[][] makeBoard(long seed, int size,  double woodProb, GameObject[] agents){
+    public static int[][] makeBoard(long seed, int size, int numRigid, int numWood, GameObject[] agents){
         //Build the board
-        int[][] board = make(seed, size, woodProb, agents);
+        int[][] board = make(seed, size, numRigid, numWood, agents);
 
         //Make a record of all agent positions
         ArrayList<Vector2d> agent_positions = new ArrayList<>();
@@ -36,7 +37,7 @@ public class LevelGenerator {
             if (VERBOSE) {
                 System.out.println("Size of inaccessible passages: " + inaccessPassages);
             }
-            board = make(seed, size,  woodProb, agents);
+            board = make(seed, size, numRigid, numWood, agents);
             inaccessPassages = inaccesibleTiles(board, agent_positions).size();
         }
 
@@ -47,50 +48,60 @@ public class LevelGenerator {
     /**
      * Place pick-ups on the board's wooden boxes
      * @param board - the board to check for wood wall placements
-     * @param item_probability - likelyhood of a wooden box containing a powerup
+     * @param num_items - how many powerups should be spawned
      * @param seed - seed for random generator of powerups
      */
-    public static int[][] makeItems(int[][] board, double item_probability, long seed) {
+    public static int[][] makeItems(int[][] board, int num_items, long seed) {
 
         Random random = new Random(seed);                           //Items are set at random
         int[][] items = new int[board.length][board[0].length];     //Items will be here.
 
         //All items to place.
-        Types.TILETYPE[] powerUpTypes = Types.TILETYPE.getPowerUpTypes().keySet().toArray(new Types.TILETYPE[0]);
-        int[] distribution = Types.TILETYPE.getPowerUpTypes().values().stream().mapToInt(x->x).toArray();
-        int total = Arrays.stream(distribution).sum();
+        Types.TILETYPE[] powerUpTypes = Types.TILETYPE.getPowerUpTypes_nagasaki45().toArray(new Types.TILETYPE[0]);
 
-        for(int x = 0; x < board.length; x++) {
-          for(int y = 0; y < board[0].length; y++) {
-            if(board[x][y] != Types.TILETYPE.WOOD.getKey()){
-              continue;
+        //Count how many wood boxes we have to put items in
+        int numberOfWood = 0;
+        for (int[] ints : board) {
+            for (int anInt : ints) {
+                if (anInt == Types.TILETYPE.WOOD.getKey())
+                    numberOfWood++;
             }
+        }
 
-            if(random.nextDouble() <= item_probability) {
-              int select = random.nextInt(total);
-              for(int i = 0; i < distribution.length; i++) {
-                if(select < distribution[i]) {
-                  items[x][y] = powerUpTypes[i].getKey();
-                  break;
-                }
-                select -= distribution[i];
-              }
-            }
-          }
+        //we can't put more items than the number of wooden boxes we have.
+        num_items = Math.min(numberOfWood, num_items);
+
+        //buffer to make sure we don't use the same wooden box twice.
+        ArrayList<Vector2d> item_positions = new ArrayList<>();
+
+        while (num_items > 0) {
+            int row = random.nextInt(board.length);
+            int col = random.nextInt(board[0].length);
+            if (board[row][col] != Types.TILETYPE.WOOD.getKey()) continue;
+            if (item_positions.contains(new Vector2d(col, row))) continue;
+
+            //Here we have a position (row,col) where an item can be placed. Random power-up spawns here.
+            item_positions.add(new Vector2d(col, row));
+            items[row][col] = powerUpTypes[random.nextInt(powerUpTypes.length)].getKey();
+            num_items--;
         }
         return items;
     }
 
     /**
-     * Constructs a board: places players and blocks in the level. Doesn't check of inaccessible passages.
+     * Constructs a board: places near32_players and blocks in the level. Doesn't check of inaccessible passages.
      * @param seed Unique seed to generate this board.
      * @param size size of the board (size x size)
-     * @param woodProb likelyhood of a free tile being a wooden, destructible block.
+     * @param numRigid number of rigid, non-destructible, blocks to put in the board.
+     * @param numWood number of wooden, destructible, blocks to put in the board.
      * @param agents Agents to put in the game.
      * @return a int[][] with the walls and player locations in the board.
      */
-    private static int[][] make(long seed, int size,  double woodProb, GameObject[] agents){
+    private static int[][] make(long seed, int size, int numRigid, int numWood, GameObject[] agents){
 
+        //Some strict checks
+        assert numRigid%2 == 0: "number of rigid walls should be even";
+        assert numWood%2 == 0: "number of wood walls should be even";
 
         // board of all 0s
         int[][] board = new int[size][size];
@@ -102,17 +113,17 @@ public class LevelGenerator {
             }
         }
 
-        //List of free coordinates on the board.
+        //List of free coordinates on the board. Main diagonal is always free.
         ArrayList<Vector2d> available_coordinates = new ArrayList<>();
         for (int i = 0; i<size ; i++){
             for (int j = 0; j < size; j++){
+                if (i != j){
                     available_coordinates.add(new Vector2d(j, i));
-
+                }
             }
         }
 
-
-        // Locate all the players in the board. they must respect a Types.CORNER_DISTANCE to
+        // Locate all the near32_players in the board. they must respect a Types.CORNER_DISTANCE to
         // their respective corners.
         board[Types.CORNER_DISTANCE][Types.CORNER_DISTANCE] = Types.TILETYPE.AGENT0.getKey();
         board[size-Types.CORNER_DISTANCE -1][Types.CORNER_DISTANCE] = Types.TILETYPE.AGENT1.getKey();
@@ -161,43 +172,41 @@ public class LevelGenerator {
             available_coordinates.remove(new Vector2d(avX, avY - i));
         }
 
-        for(int x = 1; x < size; x += 2) {
-            for(int y = 1; y < size; y += 2) {
-                board[x][y] = Types.TILETYPE.RIGID.getKey();
-                available_coordinates.remove(new Vector2d(x, y));
-            }
-        }
+        //Create a wooden passage in the rows and columns between agents
+        int passage_start = loc+BREATHING_SPACE+1;
         int WOOD = Types.TILETYPE.WOOD.getKey();
-        Random r = new Random(seed);
-        for(int x = 0; x < size; x += 1) {
-            for(int y = 0; y < size; y += 1) {
-                if(available_coordinates.contains((new Vector2d(x,y))) && r.nextDouble() < woodProb) {
-                    board[x][y] = WOOD;
-                }
-            }
+        int n = size - (passage_start*2);
+        for (int i = 0; i < n; i++){
+
+            //From top left
+            int x0 = passage_start + i;
+            int y0 = loc;
+            board[x0][y0] = WOOD;
+            board[y0][x0] = WOOD;
+            available_coordinates.remove(new Vector2d(x0, y0));
+            available_coordinates.remove(new Vector2d(y0, x0));
+
+            //From bottom right
+            int x1 = size - 1 - x0;
+            int y1 = size - 1 - loc;
+            board[x1][y1] = WOOD;
+            board[y1][x1] = WOOD;
+            available_coordinates.remove(new Vector2d(x1, y1));
+            available_coordinates.remove(new Vector2d(y1, x1));
+
+            numWood -= 4;
         }
 
-        int TELEPORT = Types.TILETYPE.TELEPORT.getKey();
-        int counterPortal = 0;
-        double selectPortal = Math.random();
-        if (selectPortal<=0.5){
-            board[2][3] = TELEPORT;
-            board[7][8] = TELEPORT;
-        }else{
-            board[8][2] = TELEPORT;
-            board[2][8] = TELEPORT;}
 
-        /*
-        Random p = new Random(seed);
-        for(int x = 0; x < size; x += 1) {
-            for(int y = 0; y < size; y += 1) {
-                if(available_coordinates.contains((new Vector2d(x,y))) && counterPortal<2 && p.nextDouble() < 0.9) {
-                    board[x][y] = TELEPORT;
-                    firstPortal = new Vector2d(x,y);
-                    counterPortal ++;
-                }
-            }
-        }*/
+        //Place more rigid tiles until all desired ones are placed.
+        int RIGID = Types.TILETYPE.RIGID.getKey();
+        while (numRigid >0 && available_coordinates.size()>1){
+            numRigid = placeBlock(seed, RIGID, numRigid, available_coordinates, board);
+        }
+
+        while (numWood > 0 && available_coordinates.size()>1){
+            numWood = placeBlock(seed, WOOD, numWood, available_coordinates, board);
+        }
 
         //Finally, set the positions to the agent objects.
         for (int i = 0; i < agents.length; i++) {
@@ -359,7 +368,7 @@ public class LevelGenerator {
                 new Avatar(Types.TILETYPE.AGENT2.getKey(), Types.GAME_MODE.FFA),
                 new Avatar(Types.TILETYPE.AGENT3.getKey(), Types.GAME_MODE.FFA)
         };
-        int[][] board = LevelGenerator.makeBoard(seed+4, 11, .95, agents);
+        int[][] board = LevelGenerator.makeBoard(seed+4, 11, 20, 20, agents);
 
         if (VERBOSE) {
             System.out.println("Final map generated: ");

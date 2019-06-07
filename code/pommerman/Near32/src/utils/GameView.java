@@ -58,13 +58,9 @@ public class GameView extends JComponent {
 
                     // Actual image (admits transparencies).
                     Image objImage = gobj.getImage();
-                    boolean isRemoteBomb = gobj == Types.TILETYPE.BOMB&& bombLife[i][j] > BOMB_LIFE;
-                    if(isRemoteBomb ){
-                        objImage = TILETYPE.REMOTEBOMBGO.getImage();
-                    }
                     if (objImage != null) {
                         if (gobj == Types.TILETYPE.BOMB) {
-                            drawBomb(g, objImage, rect,isRemoteBomb? bombLife[i][j]-1 : bombLife[i][j], cellSize);
+                            drawBomb(g, objImage, rect, bombLife[i][j], cellSize);
                         } else {
                             drawImage(g, objImage, rect);
                         }

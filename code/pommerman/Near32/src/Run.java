@@ -1,10 +1,11 @@
 import core.Game;
-import players.*;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.rhea.RHEAPlayer;
-import players.rhea.utils.Constants;
-import players.rhea.utils.RHEAParams;
+import core.Player;
+import near32_players.*;
+import near32_players.mcts.MCTSParams;
+import near32_players.mcts.MCTSPlayer;
+import near32_players.rhea.RHEAPlayer;
+import near32_players.rhea.utils.Constants;
+import near32_players.rhea.utils.RHEAParams;
 import utils.*;
 
 import java.util.*;
@@ -27,7 +28,7 @@ public class Run {
         System.out.println("\t\t 4 RHEA 200 itereations, shift buffer, pop size 1, random init, length: 12, custom heuristic");
         System.out.println("\t\t 5 RHEA 200 itereations, shift buffer, pop size 1, random init, length: 12, advanced heuristic");
         System.out.println("\t\t 6 MCTS 200 iterations, length: 12, custom heuristic");
-        System.out.println("\t\t 7 MCTS 200 iterations, length: 12, advanced heuristic");
+        System.out.println("\t\t 7 MCTS 200 iterations, length: 12, custom heuristic");
     }
 
     public static void main(String[] args) {
@@ -41,15 +42,6 @@ public class Run {
         long seeds[] = new long[] {93988, 19067, 64416, 83884, 55636, 27599, 44350, 87872, 40815,
                 11772, 58367, 17546, 75375, 75772, 58237, 30464, 27180, 23643, 67054, 19508};
 
-        // Because only 20 seeds? HAHAHA
-        long danSeeds[] = new long[] {93988, 19067, 64416, 83884, 55636, 27599, 44350, 87872, 40815,
-                11772, 58367, 17546, 75375, 75772, 58237, 30464, 27180, 23643, 67054, 19508,
-                // My additions
-                42, 69, 77777, 1337, 666, 58008, 913248, 123, 73429, 1239,
-                78678623, 912394, 783932929, 1239149134, 643517, 19823, 89543, 8245, 51123, 1,
-                12345, 67890, 9876, 54321, 13579, 943284, 7181819, 1929384, 43875894, 2
-        };
-
 
         int RHEA_CUSTOM_HEURISTIC = 0;
         int RHEA_ADVANCED_HEURISTIC = 1;
@@ -61,7 +53,7 @@ public class Run {
 
         try {
 
-            // Create players
+            // Create near32_players
             ArrayList<Player> players = new ArrayList<>();
             int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -86,7 +78,7 @@ public class Run {
 
                 MCTSParams mctsParams = new MCTSParams();
                 mctsParams.stop_type = mctsParams.STOP_ITERATIONS;
-                mctsParams.rollout_depth = 8;
+                mctsParams.rollout_depth = 12;
 
                 switch(agentType) {
                     case 0:
@@ -94,18 +86,12 @@ public class Run {
                         playerStr[i-3] = "DoNothing";
                         break;
                     case 1:
-//                        p = new RandomPlayer(seed, playerID++);
-//                        playerStr[i-3] = "Random";
-                        mctsParams.heuristic_method = mctsParams.ADVANCED_HEURISTIC;
-                        p = new MCTSPlayer(seed, playerID++, mctsParams, new SimpleEvoAgent(seed, playerID));
-                        playerStr[i-3] = "MCTS.Custom Heuristic.SimpleTweaked";
+                        p = new RandomPlayer(seed, playerID++);
+                        playerStr[i-3] = "Random";
                         break;
                     case 2:
-//                        p = new OSLAPlayer(seed, playerID++);
-//                        playerStr[i-3] = "OSLA";
-                        mctsParams.heuristic_method = mctsParams.CUSTOM_HEURISTIC;
-                        p = new MCTSPlayer(seed, playerID++, mctsParams, new RHEAPlayer(seed, playerID));
-                        playerStr[i-3] = "MCTS.Custom Heuristic.RHEA";
+                        p = new OSLAPlayer(seed, playerID++);
+                        playerStr[i-3] = "OSLA";
                         break;
                     case 3:
                         p = new SimplePlayer(seed, playerID++);
@@ -117,23 +103,19 @@ public class Run {
                         playerStr[i-3] = "RHEA-Custom";
                         break;
                     case 5:
-                        rheaParams.heurisic_type = Constants.ADVANCED_HEURISTIC;
+                        rheaParams.heurisic_type = Constants.CUSTOM_HEURISTIC;//Constants.ADVANCED_HEURISTIC;
                         p = new RHEAPlayer(seed, playerID++, rheaParams);
                         playerStr[i-3] = "RHEA-Advanced";
                         break;
                     case 6:
                         mctsParams.heuristic_method = mctsParams.CUSTOM_HEURISTIC;
-                        p = new MCTSPlayer(seed, playerID++, mctsParams, new RandomPlayer(seed, playerID));
-                        playerStr[i-3] = "MCTS.Custom Heuristic.Random";
+                        p = new MCTSPlayer(seed, playerID++, mctsParams);
+                        playerStr[i-3] = "MCTS-Custom";
                         break;
                     case 7:
-                        mctsParams.heuristic_method = mctsParams.CUSTOM_HEURISTIC;
+                        mctsParams.heuristic_method = mctsParams.CUSTOM_HEURISTIC;//mctsParams.ADVANCED_HEURISTIC;
                         p = new MCTSPlayer(seed, playerID++, mctsParams);
-                        playerStr[i-3] = "MCTS.Custom Heuristic.SimplePlayer";
-                        break;
-                    case 8:
-                        p = new SimpleEvoAgent(seed, playerID++);
-                        playerStr[i-3] = "Simple-Evo-Agent";
+                        playerStr[i-3] = "MCTS-ADVANCED";
                         break;
                     default:
                         System.out.println("WARNING: Invalid agent ID: " + agentType );
@@ -149,9 +131,9 @@ public class Run {
                     gameIdStr+="-";
             }
 
-            Game game = new Game(danSeeds[0], boardSize, gMode, gameIdStr);
+            Game game = new Game(seeds[0], boardSize, gMode, gameIdStr);
 
-            // Make sure we have exactly NUM_PLAYERS players
+            // Make sure we have exactly NUM_PLAYERS near32_players
             assert players.size() == Types.NUM_PLAYERS;
             game.setPlayers(players);
 
@@ -165,7 +147,7 @@ public class Run {
             System.out.println("]");
 
 //            runGame(game, new KeyController(true), new KeyController(false));
-            runGames(game, danSeeds, N, false);
+            runGames(game, seeds, N, false);
 
         } catch(Exception e) {
             e.printStackTrace();

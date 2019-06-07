@@ -2,8 +2,7 @@ package core;
 
 import objects.Avatar;
 import objects.GameObject;
-import players.Player;
-import players.SimonSaysPlayer;
+import nagasaki45_players.SimonSaysPlayer;
 import utils.GUI;
 import utils.GameLog;
 import utils.Types;
@@ -23,10 +22,10 @@ public class Game {
     // State of the game (objects, ticks, etc).
     private GameState gs;
 
-    // GameState objects for players to make decisions
+    // GameState objects for nagasaki45_players to make decisions
     private GameState[] gameStateObservations;
 
-    // List of players of the game
+    // List of nagasaki45_players of the game
     private ArrayList<Player> players;
 
     // Mode of the game being played. This could be FFA, TEAM or TEAM_RADIO.
@@ -135,7 +134,7 @@ public class Game {
     }
 
     /**
-     * @return an exact copy of this game, including players, current game state and state observations.
+     * @return an exact copy of this game, including nagasaki45_players, current game state and state observations.
      */
     public Game copy() {
         Game copy = new Game(gs);
@@ -155,7 +154,7 @@ public class Game {
     }
 
     /**
-     * Sets the players of the game and initializes the array to hold their game states.
+     * Sets the nagasaki45_players of the game and initializes the array to hold their game states.
      * @param players Players of the game.
      */
     public void setPlayers(ArrayList<Player> players) {
@@ -163,8 +162,8 @@ public class Game {
     }
 
     /**
-     * Retuns the players of the game
-     * @return the players of the game
+     * Retuns the nagasaki45_players of the game
+     * @return the nagasaki45_players of the game
      */
     public ArrayList<Player> getPlayers() {
         return players;
@@ -349,7 +348,7 @@ public class Game {
     }
 
     /**
-     * Creates actor objects for the players.
+     * Creates actor objects for the nagasaki45_players.
      */
     public void createActors() {
         for (int i = 0; i < NUM_PLAYERS; i++)
@@ -368,7 +367,7 @@ public class Game {
     }
 
     /**
-     * Updates the state observations for all players.
+     * Updates the state observations for all nagasaki45_players.
      */
     private void updateAssignedGameStates() {
         if (gameStateObservations == null) {
@@ -392,8 +391,8 @@ public class Game {
     }
 
     /**
-     * This method terminates the game, assigning the winner/result state to all players.
-     * @return an array of result states for all players.
+     * This method terminates the game, assigning the winner/result state to all nagasaki45_players.
+     * @return an array of result states for all nagasaki45_players.
      */
     @SuppressWarnings("UnusedReturnValue")
     private Types.RESULT[] terminate() {
@@ -464,8 +463,8 @@ public class Game {
     }
 
     /**
-     * Returns number of players in the game
-     * @return number of players in the game
+     * Returns number of nagasaki45_players in the game
+     * @return number of nagasaki45_players in the game
      */
     public int nPlayers() {
         return NUM_PLAYERS;
@@ -517,7 +516,7 @@ public class Game {
     }
 
     /**
-     * Returns the last game logged, with SimonSays players executing the logged action sequences, the saved seed,
+     * Returns the last game logged, with SimonSays nagasaki45_players executing the logged action sequences, the saved seed,
      * initial state and game mode.
      * @return - last game logged.
      */

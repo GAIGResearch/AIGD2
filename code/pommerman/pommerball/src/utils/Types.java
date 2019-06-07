@@ -5,6 +5,7 @@ import core.gameConfig.OriginalGameConfig;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class Types {
@@ -44,7 +45,7 @@ public class Types {
     public static boolean VISUALS = true;
     public static boolean LOGGING_STATISTICS = false;
 
-    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 players).
+    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 pommerball_players).
     public static int NUM_ACTIONS = 6;        //Changing this is NOT going to work either.
 
     public static IGameConfig getGameConfig() {return gameConfig;}
@@ -118,11 +119,25 @@ public class Types {
          * Returns all power up types.
          * @return all power up types.
          */
-        public static HashSet<TILETYPE> getPowerUpTypes() {
+        public static HashMap<TILETYPE,Integer> getPowerUpTypes() {
+            HashMap<TILETYPE,Integer> types = new HashMap<>();
+            types.put(EXTRABOMB,7);
+            types.put(INCRRANGE,5);
+            types.put(KICK,2);
+            //types.put(REMOTEBOMB,2);
+            return types;
+        }
+
+
+        /**
+         * Returns all power up types.
+         * @return all power up types.
+         */
+        public static HashSet<TILETYPE> getPowerUpTypes_nagasaki45() {
             HashSet<TILETYPE> types = new HashSet<>();
             types.add(EXTRABOMB);
             types.add(INCRRANGE);
-            //types.add(KICK);
+            types.add(KICK);
             return types;
         }
 

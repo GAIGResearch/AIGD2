@@ -13,23 +13,27 @@ public class Types {
     // Game Configuration constants.
     public static int MAX_GAME_TICKS = 800;         //Maximum duration of the game.
     public static int BOMB_LIFE = 10;               //Ticks until a bomb explodes.
+    public static int BOMB_DIFFUSION_THRESHOLD = 2; //Ticks until a bomb is diffused.
     public static int FLAME_LIFE = 5;               //Ticks until a flame dissappears.
+    public static int WALL_LIFE = MAX_GAME_TICKS;   //infinite wall time
+    public static int WALL_SPEED = 100000;              //TODO do the math to implement it depending on the board size
+    public static int WALL_LAYER = 0;
+    public static int WALL_CLOCK = 0;               //internal wall clock
     public static int DEFAULT_BOMB_BLAST = 2;       //Default bombs create flames with this range.
     public static int DEFAULT_BOMB_AMMO = 1;        //Default number of simultaneous bombs an agent can put.
     public static boolean DEFAULT_BOMB_KICK = false;//Can agents kick bomb by default?
-    public static boolean DEFAULT_REMOTE_BOMB = false;//Can agents kick bomb by default?
-
     public static int DEFAULT_VISION_RANGE = -1;    //-1 for full observability, >1 for PO.
-    public static int  portalTimeWindow = 20;
+
     //Game configuration to use in the game, which determines victory conditions.
     private static IGameConfig gameConfig = new OriginalGameConfig();
 
     //Board configuration constants.
     public static int BOARD_SIZE = 11;              //Size of the board (n x n).
-    public static double WOOD_PROBABILITY = 0.8;          //Number of wooden (destroyable) blocks for the level.
-    public static double ITEM_BREAK_PROBABILITY = 0.4;         //Number of items to put in level.
+    public static int BOARD_NUM_RIGID = 20;         //Number of rigid blocks to put in the level.
+    public static int BOARD_NUM_WOOD = 20;          //Number of wooden (destroyable) blocks for the level.
+    public static int BOARD_NUM_ITEMS = 5;         //Number of items to put in level.
     public static int MAX_INACCESIBLE_TILES = 4;    //Number of inaccessible parts of the level allowed.
-    public static int CORNER_DISTANCE = 0;          //Distance to the corner, in tiles, of the starting agent position.
+    public static int CORNER_DISTANCE = 4;          //Distance to the corner, in tiles, of the starting agent position.
     public static int BREATHING_SPACE = 2;          //Breathing space, L shaped tile section free at start around agent.
 
     // Visualization variables (used to display game for humans to see).
@@ -46,8 +50,8 @@ public class Types {
     public static boolean VISUALS = true;
     public static boolean LOGGING_STATISTICS = false;
 
-    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 players).
-    public static int NUM_ACTIONS = 7;        //Changing this is NOT going to work either.
+    public final static int NUM_PLAYERS = 4;  //Changing this is NOT going to work (Forward Model assumes 4 near32_players).
+    public static int NUM_ACTIONS = 6;        //Changing this is NOT going to work either.
 
     public static IGameConfig getGameConfig() {return gameConfig;}
 
@@ -73,10 +77,7 @@ public class Types {
         AGENT0(10),
         AGENT1(11),
         AGENT2(12),
-        AGENT3(13),
-        REMOTEBOMB(14),
-        REMOTEBOMBGO(15),
-        TELEPORT(16);
+        AGENT3(13);
 
         private int key;
         TILETYPE(int numVal) {  this.key = numVal;  }
@@ -89,24 +90,20 @@ public class Types {
 
         public Image getImage()
         {
-            if      (key == PASSAGE.key) return ImageIO.GetInstance().getImage("img/passage.png");
+            if      (key == PASSAGE.key) return ImageIO.GetInstance().getImage("img/sand.png");
             else if (key == RIGID.key) return ImageIO.GetInstance().getImage("img/rigid.png");
             else if (key == WOOD.key) return ImageIO.GetInstance().getImage("img/wood.png");
-            else if (key == BOMB.key) return ImageIO.GetInstance().getImage("img/bomb.png");
-            else if (key == FLAMES.key) return ImageIO.GetInstance().getImage("img/flames.png");
+            else if (key == BOMB.key) return ImageIO.GetInstance().getImage("img/bomb_black.png");
+            else if (key == FLAMES.key) return ImageIO.GetInstance().getImage("img/water.png");
             else if (key == FOG.key) return ImageIO.GetInstance().getImage("img/fog.png");
             else if (key == EXTRABOMB.key) return ImageIO.GetInstance().getImage("img/extrabomb.png");
             else if (key == INCRRANGE.key) return ImageIO.GetInstance().getImage("img/incrrange.png");
-            else if (key == REMOTEBOMB.key) return ImageIO.GetInstance().getImage("img/remoteBombpower.png");
-            else if (key == REMOTEBOMBGO.key) return ImageIO.GetInstance().getImage("img/remotebomb.png");
-
             else if (key == KICK.key) return ImageIO.GetInstance().getImage("img/kick.png");
             else if (key == AGENTDUMMY.key) return ImageIO.GetInstance().getImage("img/skull1.png");
             else if (key == AGENT0.key) return ImageIO.GetInstance().getImage("img/agent0.png");
             else if (key == AGENT1.key) return ImageIO.GetInstance().getImage("img/agent1.png");
             else if (key == AGENT2.key) return ImageIO.GetInstance().getImage("img/agent2.png");
             else if (key == AGENT3.key) return ImageIO.GetInstance().getImage("img/agent3.png");
-            else if (key == TELEPORT.key) return ImageIO.GetInstance().getImage("img/portal.png");
             else return null;
         }
 
@@ -123,18 +120,32 @@ public class Types {
             return types;
         }
 
-        /**
+       /**
          * Returns all power up types.
          * @return all power up types.
          */
         public static HashMap<TILETYPE,Integer> getPowerUpTypes() {
-          HashMap<TILETYPE,Integer> types = new HashMap<>();
+            HashMap<TILETYPE,Integer> types = new HashMap<>();
             types.put(EXTRABOMB,7);
             types.put(INCRRANGE,5);
             types.put(KICK,2);
-            types.put(REMOTEBOMB,2);
+            //types.put(REMOTEBOMB,2);
             return types;
         }
+
+
+        /**
+         * Returns all power up types.
+         * @return all power up types.
+         */
+        public static HashSet<TILETYPE> getPowerUpTypes_nagasaki45() {
+            HashSet<TILETYPE> types = new HashSet<>();
+            types.add(EXTRABOMB);
+            types.add(INCRRANGE);
+            types.add(KICK);
+            return types;
+        }
+
 
 
         /**
@@ -166,7 +177,16 @@ public class Types {
     public enum GAME_MODE {
         FFA(0),
         TEAM(1),
-        TEAM_RADIO(2);
+        TEAM_RADIO(2),
+        FFA_GETAMMO(3),
+        TEAM_GETAMMO(4),
+        TEAM_RADIO_GETAMMO(5),
+        FFA_TELEPORT(6),
+        TEAM_TELEPORT(7),
+        TEAM_RADIO_TELEPORT(8),
+        FFA_RANDOM(9),
+        TEAM_RANDOM(10),
+        TEAM_RADIO_RANDOM(11);
 
         private int key;
         GAME_MODE(int numVal) {  this.key = numVal; }
@@ -208,7 +228,7 @@ public class Types {
         ACTION_LEFT(3),
         ACTION_RIGHT(4),
         ACTION_BOMB(5),
-        ACTION_ACTIVATE(6);
+        ACTION_DIFFUSE(6);
 
         private int key;
         ACTIONS(int numVal) {  this.key = numVal; }
@@ -227,7 +247,7 @@ public class Types {
             allActions.add(ACTION_LEFT);
             allActions.add(ACTION_RIGHT);
             allActions.add(ACTION_BOMB);
-            allActions.add(ACTION_ACTIVATE);
+            allActions.add(ACTION_DIFFUSE);
             return allActions;
         }
 
@@ -248,6 +268,18 @@ public class Types {
             else
                 return DIRECTIONS.NONE;
         }
+    }
+
+    public enum DIFFUSION_RULE
+    {
+        GET_AMMO(0),
+        TELEPORT(1),
+        RANDOM(2);
+
+        private int key;
+
+        DIFFUSION_RULE(int numVal) {  this.key = numVal; }
+        public int getKey() {return this.key;}
     }
 
     /**

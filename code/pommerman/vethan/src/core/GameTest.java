@@ -3,12 +3,12 @@ package core;
 import objects.Avatar;
 import objects.GameObject;
 import org.junit.jupiter.api.Test;
-import players.*;
-import players.mcts.MCTSParams;
-import players.mcts.MCTSPlayer;
-import players.rhea.RHEAPlayer;
-import players.rhea.utils.Constants;
-import players.rhea.utils.RHEAParams;
+import vethan_players.*;
+import vethan_players.mcts.MCTSParams;
+import vethan_players.mcts.MCTSPlayer;
+import vethan_players.rhea.RHEAPlayer;
+import vethan_players.rhea.utils.Constants;
+import vethan_players.rhea.utils.RHEAParams;
 import utils.*;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ class GameTest {
     }
 
     /**
-     * This method tests whether (in PO games) the players only have access to the restricted info
+     * This method tests whether (in PO games) the vethan_players only have access to the restricted info
      * about the game they are playing.
      *
      * - There should be no info of what's on the board outside this range. This includes bomb life and strength.
@@ -136,7 +136,7 @@ class GameTest {
 
     /**
      * This method tests how much time is spent per game tick() on average over many games,
-     * by simulating random players (taking little computation power, but some) going against each other
+     * by simulating random vethan_players (taking little computation power, but some) going against each other
      */
     @Test
     void timePerTick(){
@@ -198,7 +198,7 @@ class GameTest {
         Game game = new Game(seed, boardSize, gameMode, "");
         game.setLogGame(true);
 
-        // Create players
+        // Create vethan_players
         ArrayList<Player> players = new ArrayList<>();
         int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -214,18 +214,18 @@ class GameTest {
         players.add(new RHEAPlayer(seed, playerID++, rheaParams));
         players.add(new SimplePlayer(seed, playerID++));
 
-        // Make sure we have exactly NUM_PLAYERS players
+        // Make sure we have exactly NUM_PLAYERS vethan_players
         assert players.size() == Types.NUM_PLAYERS : "There should be " + Types.NUM_PLAYERS +
                 " added to the game, but there are " + players.size();
 
-        //Assign players and run the game.
+        //Assign vethan_players and run the game.
         game.setPlayers(players);
 
         Game copy = game.copy();
         Types.MAX_GAME_TICKS = 800;
         Game.LOG_GAME = true;
         Game.LOG_GAME_JSON = true;
-        //Run a single game with the players
+        //Run a single game with the vethan_players
         game.run(null, null, useSeparateThreads);
         System.out.println("game length: "+game.getTick());
         GameLog log = game.getGameLog();
@@ -280,7 +280,7 @@ class GameTest {
 
 
 
-        // Create players
+        // Create vethan_players
         int playerID = Types.TILETYPE.AGENT0.getKey();
 
         MCTSParams mctsParams = new MCTSParams();
@@ -292,10 +292,10 @@ class GameTest {
 
 
 
-        // Make sure we have exactly NUM_PLAYERS players
+        // Make sure we have exactly NUM_PLAYERS vethan_players
 
 
-        //Assign players and run the game.
+        //Assign vethan_players and run the game.
         int tests = 5;
 
         for (int n = 0; n < tests; n++) {
@@ -313,7 +313,7 @@ class GameTest {
             game.setPlayers(players);
 
             Types.MAX_GAME_TICKS = 800;
-            //Run a single game with the players
+            //Run a single game with the vethan_players
             List<GameState> stateList = new ArrayList<>();
 
             stateList.add(game.getGameState().copy());
@@ -359,7 +359,7 @@ class GameTest {
     /**
      * This tests whether the replay is the same as the original game,
      * when the game is played by agents that don't use the forward model.
-     * If the replays are wrong, then it's not only because FM using players screw with the game state of the real game.
+     * If the replays are wrong, then it's not only because FM using vethan_players screw with the game state of the real game.
      */
     @Test
     void determinismTickNoForwardModel() {
@@ -372,7 +372,7 @@ class GameTest {
         Game game = new Game(seed, boardSize, gameMode, "");
         game.setLogGame(true);
 
-        // Create players
+        // Create vethan_players
         ArrayList<Player> players = new ArrayList<>();
         int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -383,25 +383,25 @@ class GameTest {
         RHEAParams rheaParams = new RHEAParams();
         rheaParams.heurisic_type = Constants.CUSTOM_HEURISTIC;
 
-        //players.add(new MCTSPlayer(seed, playerID++, mctsParams));
-        //players.add(new RHEAPlayer(seed, playerID++, rheaParams));
+        //vethan_players.add(new MCTSPlayer(seed, playerID++, mctsParams));
+        //vethan_players.add(new RHEAPlayer(seed, playerID++, rheaParams));
         //
         players.add(new SimplePlayer(seed, playerID++));
         players.add(new SimplePlayer(seed, playerID++));
         players.add(new SimplePlayer(seed, playerID++));
         players.add(new SimplePlayer(seed, playerID++));
 
-        // Make sure we have exactly NUM_PLAYERS players
+        // Make sure we have exactly NUM_PLAYERS vethan_players
         assert players.size() == Types.NUM_PLAYERS : "There should be " + Types.NUM_PLAYERS +
                 " added to the game, but there are " + players.size();
 
 
-        //Assign players and run the game.
+        //Assign vethan_players and run the game.
         game.setPlayers(players);
 
         Game copy = game.copy();
         Types.MAX_GAME_TICKS = 400;
-        //Run a single game with the players
+        //Run a single game with the vethan_players
         game.run(null, null, useSeparateThreads);
         GameLog log = game.getGameLog();
         GameLog deserializedLog = GameLog.deserializeLastJSON();
@@ -439,7 +439,7 @@ class GameTest {
     /**
      * This tests whether the replay is the same as the original game,
      * when the game is played by agents that DO use the forward model.
-     * If the replay is right, then the players most likely do not screw with the real model when using the FM.
+     * If the replay is right, then the vethan_players most likely do not screw with the real model when using the FM.
      */
     @Test
     void determinismTickForwardModelUsed() {
@@ -452,7 +452,7 @@ class GameTest {
         Game game = new Game(seed, boardSize, gameMode, "");
         game.setLogGame(true);
 
-        // Create players
+        // Create vethan_players
         ArrayList<Player> players = new ArrayList<>();
         int playerID = Types.TILETYPE.AGENT0.getKey();
 
@@ -468,20 +468,20 @@ class GameTest {
 
         players.add(new SimplePlayer(seed, playerID++));
         players.add(new SimplePlayer(seed, playerID++));
-        //players.add(new SimplePlayer(seed, playerID++));
-        //players.add(new SimplePlayer(seed, playerID++));
+        //vethan_players.add(new SimplePlayer(seed, playerID++));
+        //vethan_players.add(new SimplePlayer(seed, playerID++));
 
-        // Make sure we have exactly NUM_PLAYERS players
+        // Make sure we have exactly NUM_PLAYERS vethan_players
         assert players.size() == Types.NUM_PLAYERS : "There should be " + Types.NUM_PLAYERS +
                 " added to the game, but there are " + players.size();
 
 
-        //Assign players and run the game.
+        //Assign vethan_players and run the game.
         game.setPlayers(players);
 
         Game copy = game.copy();
         Types.MAX_GAME_TICKS = 400;
-        //Run a single game with the players
+        //Run a single game with the vethan_players
         game.run(null, null, useSeparateThreads);
         GameLog log = game.getGameLog();
         GameLog deserializedLog = GameLog.deserializeLastJSON();
