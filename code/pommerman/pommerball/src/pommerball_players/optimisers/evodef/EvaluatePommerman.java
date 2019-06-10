@@ -1,9 +1,9 @@
 package pommerball_players.optimisers.evodef;
 
 import core.Game;
+import core.Player;
 import pommerball_players.SimplePlayer;
 import pommerball_players.optimisers.ParameterizedPlayer;
-import pommerball_players.Player;
 import utils.Types;
 
 import java.util.ArrayList;

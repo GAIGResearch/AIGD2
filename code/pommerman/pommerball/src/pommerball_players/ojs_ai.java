@@ -4,6 +4,7 @@ import core.GameState;
 import utils.Types;
 
 import java.util.Random;
+import core.Player;
 
 public class ojs_ai extends Player {
     private Random random;

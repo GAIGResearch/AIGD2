@@ -1,8 +1,8 @@
 package pommerball_players.rhea;
 
 import core.GameState;
+import core.Player;
 import pommerball_players.optimisers.ParameterizedPlayer;
-import pommerball_players.Player;
 import pommerball_players.rhea.utils.RHEAParams;
 import utils.ElapsedCpuTimer;
 import utils.Types;

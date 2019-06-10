@@ -33,11 +33,11 @@ public class Run {
 
     public static void main(String[] args) {
 
-//        Random rnd = new Random();
-//        for(int i = 0; i < 20; i++)
-//        {
-//            System.out.println(rnd.nextInt(100000));
-//        }
+        Random rnd = new Random();
+        for(int i = 0; i < 20; i++)
+        {
+            System.out.print(rnd.nextInt(100000) + ",");
+        }
 
         long seeds[] = new long[] {93988, 19067, 64416, 83884, 55636, 27599, 44350, 87872, 40815,
                 11772, 58367, 17546, 75375, 75772, 58237, 30464, 27180, 23643, 67054, 19508};

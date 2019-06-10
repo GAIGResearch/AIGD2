@@ -1,8 +1,8 @@
 package pommerball_players.mcts;
 
 import core.GameState;
+import core.Player;
 import pommerball_players.optimisers.ParameterizedPlayer;
-import pommerball_players.Player;
 import utils.ElapsedCpuTimer;
 import utils.Types;
 

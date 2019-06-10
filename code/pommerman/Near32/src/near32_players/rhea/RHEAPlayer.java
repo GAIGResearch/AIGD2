@@ -2,7 +2,7 @@ package near32_players.rhea;
 
 import core.GameState;
 import near32_players.optimisers.ParameterizedPlayer;
-import near32_players.Player;
+import core.Player;
 import near32_players.rhea.utils.RHEAParams;
 import utils.ElapsedCpuTimer;
 import utils.Types;

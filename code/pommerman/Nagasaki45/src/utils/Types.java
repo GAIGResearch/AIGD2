@@ -17,8 +17,8 @@ public class Types {
     public static int DEFAULT_BOMB_BLAST = 2;       //Default bombs create flames with this range.
     public static int DEFAULT_BOMB_AMMO = 1;        //Default number of simultaneous bombs an agent can put.
     public static boolean DEFAULT_BOMB_KICK = false;//Can agents kick bomb by default?
-    public static int DEFAULT_VISION_RANGE = -1;    //-1 for full observability, >1 for PO.
-    public static int FAKE_ACTIONS = 200;           //Actions that do nothing and seize the agent
+    public static int DEFAULT_VISION_RANGE = 4;    //-1 for full observability, >1 for PO.
+    public static int FAKE_ACTIONS = 400;           //Actions that do nothing and seize the agent
 
     //Game configuration to use in the game, which determines victory conditions.
     private static IGameConfig gameConfig = new OriginalGameConfig();

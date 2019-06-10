@@ -1,6 +1,6 @@
 package pommerball_players.optimisers;
 
-import pommerball_players.Player;
+import core.Player;
 
 public abstract class ParameterizedPlayer extends Player {
 

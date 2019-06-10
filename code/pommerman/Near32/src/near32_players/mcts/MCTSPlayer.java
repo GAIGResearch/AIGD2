@@ -2,7 +2,7 @@ package near32_players.mcts;
 
 import core.GameState;
 import near32_players.optimisers.ParameterizedPlayer;
-import near32_players.Player;
+import core.Player;
 import utils.ElapsedCpuTimer;
 import utils.Types;
 

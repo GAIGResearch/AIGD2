@@ -19,7 +19,7 @@ public class Types {
     public static boolean DEFAULT_BOMB_KICK = false;//Can agents kick bomb by default?
     public static boolean DEFAULT_REMOTE_BOMB = false;//Can agents kick bomb by default?
 
-    public static int DEFAULT_VISION_RANGE = -1;    //-1 for full observability, >1 for PO.
+    public static int DEFAULT_VISION_RANGE = 4;    //-1 for full observability, >1 for PO.
     public static int  portalTimeWindow = 20;
     //Game configuration to use in the game, which determines victory conditions.
     private static IGameConfig gameConfig = new OriginalGameConfig();

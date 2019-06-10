@@ -3,7 +3,7 @@ package near32_players.optimisers.evodef;
 import core.Game;
 import near32_players.SimplePlayer;
 import near32_players.optimisers.ParameterizedPlayer;
-import near32_players.Player;
+import core.Player;
 import utils.Types;
 
 import java.util.ArrayList;

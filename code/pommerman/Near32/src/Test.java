@@ -71,12 +71,12 @@ public class Test {
         //Pommerball
         players.add(new MCTSPlayer2(seed, playerID++, custom_params));
 
-        //vethan
-        players.add(new IGGIPlayer(seed, playerID++));
-
         //NAGASAKI
         RHEALobsterParams rheaLobsterParams = new RHEALobsterParams();
         players.add(new RHEALobsterPlayer(seed, playerID++, rheaLobsterParams));
+
+        //vethan
+        players.add(new IGGIPlayer(seed, playerID++));
 
 
         // Make sure we have exactly NUM_PLAYERS near32_players
@@ -87,7 +87,7 @@ public class Test {
         game.setPlayers(players);
 
         //Run a single game with the near32_players
-        Run.runGame(game, ki1, ki2, useSeparateThreads);
+//        Run.runGame(game, ki1, ki2, useSeparateThreads);
 
         /* Uncomment to run the replay of the previous game: */
 //        if (game.isLogged()){
@@ -96,9 +96,12 @@ public class Test {
 //            assert(replay.getGameState().equals(game.getGameState()));
 //        }
 
+        long seeds[] = new long[] {69009,9911,21029,26344,10340,78124,60088,8507,36480,7259,
+                81979,76383,16283,21511,52421,84601,18958,65056,70089,43151};
+
         /* Run with no visuals, N repetitions TIMES number-seeds: */
-//        int N = 20;
-//        Run.runGames(game, new long[]{seed}, N, useSeparateThreads);
+        int N = 5;
+        Run.runGames(game, seeds, N, useSeparateThreads);
 
     }
 

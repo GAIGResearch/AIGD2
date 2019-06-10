@@ -19,7 +19,7 @@ public class OriginalGameConfig implements IGameConfig {
 
     @Override
     public int getTeam(Types.GAME_MODE gameMode, int playerID) {
-        if (gameMode == Types.GAME_MODE.FFA)
+        if (gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT)
             return playerID - 10;
         return playerID % 2;
     }
@@ -28,7 +28,7 @@ public class OriginalGameConfig implements IGameConfig {
     public Types.TILETYPE[] getTeammates(Types.GAME_MODE gameMode, int playerID) {
 
 
-        if (gameMode == Types.GAME_MODE.FFA) { // FFA Mode
+        if (gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT) { // FFA Mode
             return new Types.TILETYPE[] {Types.TILETYPE.AGENTDUMMY};
 
         } else { // Team Mode
@@ -55,7 +55,7 @@ public class OriginalGameConfig implements IGameConfig {
     public Types.TILETYPE[] getEnemies(Types.GAME_MODE gameMode, int playerID) {
 
 
-        if (gameMode == Types.GAME_MODE.FFA) { // FFA Mode
+        if (gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT) { // FFA Mode
 
             if(Types.TILETYPE.values()[playerID] == Types.TILETYPE.AGENT0)
                 return new Types.TILETYPE[] {Types.TILETYPE.AGENT1, Types.TILETYPE.AGENT2, Types.TILETYPE.AGENT3};
@@ -92,7 +92,7 @@ public class OriginalGameConfig implements IGameConfig {
     public Types.TILETYPE[][] getTeams(Types.GAME_MODE gameMode) {
 
         Types.TILETYPE[][] teams;
-        if (gameMode == Types.GAME_MODE.FFA) { // FFA Mode
+        if (gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT) { // FFA Mode
             //4 teams with one agent on each.
             teams = new Types.TILETYPE[4][1];
 
@@ -134,7 +134,7 @@ public class OriginalGameConfig implements IGameConfig {
         int numDeadThisTick = deadAgentsThisTick.size();
         int numAliveAgents = aliveAgents.size();
 
-        if(game_mode == Types.GAME_MODE.FFA)
+        if(game_mode == Types.GAME_MODE.FFA || game_mode == Types.GAME_MODE.FFA_TELEPORT)
         {
             //Those who died in this tick will have lost, unless everybdy is dead, in which case is a tie
             Types.RESULT status = (numDeadThisTick == numAliveAgents) ?  Types.RESULT.TIE : Types.RESULT.LOSS;
@@ -188,7 +188,7 @@ public class OriginalGameConfig implements IGameConfig {
      * @param aliveAgents All alive agents in the game.
      */
     public void processTimeout(Types.GAME_MODE gameMode, GameObject[] allAgents, ArrayList<GameObject> aliveAgents) {
-        if(gameMode == Types.GAME_MODE.FFA) {
+        if(gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT) {
             Utils.setWinningStatus(aliveAgents, Types.RESULT.TIE);
         } else { //Types.GAME_MODE.TEAM and Types.GAME_MODE.TEAM_RADIO
             Utils.setWinningStatus(allAgents, Types.RESULT.TIE);
@@ -264,7 +264,7 @@ public class OriginalGameConfig implements IGameConfig {
     private int[] getAliveCountPerTeam(Types.GAME_MODE gameMode, ArrayList<GameObject> aliveAgents) {
 
         int[] alive;
-        if (gameMode == Types.GAME_MODE.FFA) {
+        if (gameMode == Types.GAME_MODE.FFA || gameMode == Types.GAME_MODE.FFA_TELEPORT) {
             alive = new int[4];
             for (GameObject a : aliveAgents) {
                 alive[a.getType().getKey()-10]++;

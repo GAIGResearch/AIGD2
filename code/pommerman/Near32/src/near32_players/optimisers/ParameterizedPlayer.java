@@ -1,6 +1,6 @@
 package near32_players.optimisers;
 
-import near32_players.Player;
+import core.Player;
 
 public abstract class ParameterizedPlayer extends Player {
 
